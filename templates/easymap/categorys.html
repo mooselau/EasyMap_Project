@@ -1,0 +1,34 @@
+<!-- Unuse Now -->
+
+{% extends 'easymap/base.html' %}
+{% load staticfiles %} 
+
+<html>
+	<head></head>
+<body>
+	{% block map_block %}
+	<div id="category-page-container">
+		<script type="text/javascript">
+		// onclick="javascript:Category('{{ single_category.id_name }}')"
+		// This script maybe useless when partly loading this page.
+		// function Category(category_name) {
+	    // $.get("/easymap/category",{ category_name: category_name },function(data){
+	        // $( "#new" ).html( data );
+	    // })
+		// }
+		</script>
+		
+		<h2><span class="headline">Category Library</span></h2>
+		<div class="cat-container">
+		<ul class=" nav navbar-nav cat-ul">
+		{% for single_category in categorys %}
+		<!-- href="/easymap/category/{{ single_category.id_name }}" -->
+			<li class="cat-li"><a class="btn btn-info cat-btn" href="easy/category?category_name={{ single_category.id_name }}">{{ single_category.id_name }}</a></li>
+		{% endfor %}
+		</ul>
+		</div>
+	</div>
+	{% endblock %}
+</body>
+	
+</html>

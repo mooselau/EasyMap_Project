@@ -1,0 +1,89 @@
+
+#chart-container {
+    position: relative;
+    width: 100%; 
+    height: 100%; 
+    top: 10%; 
+    margin: 0 auto; 
+    /*border: 3px solid grey;*/
+    /*background-color: #FFFFE0;*/
+}
+
+
+/* Below are for the categorys in home page inside #alter div. */
+/*.cat-divs {
+    float: left;
+    text-align: center;
+    background-color: red;
+  }*/
+
+.cat-btns {
+    margin: 3px;
+    display: none;
+
+    /*background-color: red;*/
+}
+
+#cat-container {
+    /*height: 200px;*/
+    /*width: 300px;*/
+
+    position: relative;
+    width: 50%; 
+    height: 50%; 
+    top: 15%; 
+    margin: 0 auto; 
+    border: 3px solid grey;
+
+    text-align: center;
+    background-color: #FFFFE0;
+}
+
+/*#cat-title:after {*/
+    /*content: '';*/
+    /*display: block;*/
+    /*border: 2px solid grey;*/
+    /*width: 500px;*/
+    /*margin: 0px auto;*/
+/*}*/
+
+
+/* below are for the table page. */
+.up-table-container {
+    height: 50px;
+}
+.table-btn {
+    position: relative;
+    left: 50.6%;
+    top: -38px;
+}
+
+.headline {
+    font-family: Calibri, "Helvetica", san-serif;
+    line-height: 1em;
+    color: #a26;
+    /*margin: 0px auto;*/
+    margin: 35%;
+    display: inline;
+}
+
+#cat-table-title {
+    position: relative;
+    top: 10px;
+}
+
+#cat-table-title:after {
+    content: '';
+    display: block;
+    border: 2px solid grey;
+    width: 100%;
+    margin: 0px auto;
+}
+
+/* Below is used to styling table in html. */
+.table-container {
+    background-color: #FFE;
+    width: 70%;
+    margin: 0px auto;
+}
+

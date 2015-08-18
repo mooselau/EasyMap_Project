@@ -1,0 +1,96 @@
+{% extends 'easymap/base.html' %}
+{% load staticfiles %} 
+{% load easymap_extras %}
+
+<html>
+	<head></head>
+<body>
+
+	{% block map_block %}
+	<script type="text/javascript">
+	// $('.main-container').css('background-color','lightblue');
+	// $(".main-container").fadeIn('fast');
+	</script>
+	
+	<!-- This is for virtual table -->
+	{% if is_virtual_table %}
+		<div class="table-container">
+			<div class="up-table-container">
+			
+			<h2 id="cat-table-title" class="headline" cat-name="{{ table_name }}"> {{ table_name|upper }} </h2>
+			<a id="search" class="btn btn-primary table-btn table-search-btn">Show on Map!</a>
+			</div>
+
+			<table id="category-table" class="display table-category">
+			  <thead>
+			    <tr>
+			      <th>#</th>
+			      {% if columns_name %}
+				      {% for single_column in columns_name %}
+				      	<th>{{ single_column|replace:"_"|title }}</th>
+				      {% endfor %}
+			      {% endif %}
+			      <th>Unique ID</th>
+			      <th>Select Box</th>
+			    </tr>
+			  </thead>
+
+			<tbody>
+			{% for location in locations %}
+			    <tr number="{{ location.id }}">
+			      <td>{{ forloop.counter }}</td>
+			      <td>{{ location.name }}</td>
+			      <td>{{ location.address }}</td>
+			      <td>{{ location.postcode }}</td>
+			      <td>{{ location.id }}</td>
+			      <td  class="center"><input type="checkbox" name="report_myTextEditBox" value="checked"></td>
+			    </tr>
+			{% endfor %}
+
+	<!-- This is for non-virtual table -->
+	{% elif table_name %}
+		<div class="table-container">
+			<div class="up-table-container">
+			
+			<h2 id="cat-table-title" class="headline" cat-name="{{ category_name }}"> {{ table_name|upper }} </h2>
+			<a id="search" class="btn btn-primary table-btn table-search-btn">Show on Map!</a>
+			</div>
+
+			<table id="category-table" class="display table-category">
+			  <thead>
+			    <tr>
+			      <th>#</th>
+			      {% if columns_name %}
+				      {% for single_column in columns_name %}
+				      	<th>{{ single_column|replace:"_"|title }}</th>
+				      {% endfor %}
+			      {% endif %}
+			      <th>Select Box</th>
+			    </tr>
+			  </thead>
+
+			<tbody>
+			{% for location in locations %}
+			    <tr number="{{ forloop.counter }}">
+			      <td>{{ forloop.counter }}</td>
+			      <td>{{ location.name }}</td>
+			      <td>{{ location.address }}</td>
+			      <td>{{ location.postcode }}</td>
+			      <td  class="center"><input type="checkbox" name="report_myTextEditBox" value="checked"></td>
+			    </tr>
+			{% endfor %}
+
+	<!-- For none information. -->
+	{% else %}
+		<!-- Should add ERROR page here !! -->
+				<strong>Here is nothing!!</strong>
+	{% endif %}
+			  </tbody>
+			</table> 
+		</div>
+	<!-- </div> -->
+	{% endblock %}
+
+</body>
+	
+</html>

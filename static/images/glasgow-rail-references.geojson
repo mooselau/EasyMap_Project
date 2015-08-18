@@ -1,0 +1,1445 @@
+{
+  "type": "FeatureCollection", 
+  "features": [
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.209358119479379, 
+          55.86323001719084
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Alexandra Parade Rail Station", 
+        "TiplocCode": "ALXPD", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "AXP", 
+        "ModificationDateTime": "2011-07-07T16:17:02", 
+        "Easting": 261747.0, 
+        "AtcoCode": "9100ALXPD", 
+        "Modification": "rev", 
+        "RevisionNumber": 2.0, 
+        "Northing": 665542.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.26969703641445, 
+          55.85995643366338
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Anderston Rail Station", 
+        "TiplocCode": "ANDRSTN", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "AND", 
+        "ModificationDateTime": "2011-07-07T16:17:02", 
+        "Easting": 257960.0, 
+        "AtcoCode": "9100ANDRSTN", 
+        "Modification": "rev", 
+        "RevisionNumber": 2.0, 
+        "Northing": 665300.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.320680212508683, 
+          55.8894138936887
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Anniesland Rail Station", 
+        "TiplocCode": "ANSL", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "ANL", 
+        "ModificationDateTime": "2011-07-07T16:17:02", 
+        "Easting": 254880.0, 
+        "AtcoCode": "9100ANSL", 
+        "Modification": "rev", 
+        "RevisionNumber": 3.0, 
+        "Northing": 668683.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.249409373647434, 
+          55.85736283980099
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Argyle Street Rail Station", 
+        "TiplocCode": "ARGYLST", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "AGS", 
+        "ModificationDateTime": "2010-10-13T15:31:21", 
+        "Easting": 259220.0, 
+        "AtcoCode": "9100ARGYLST", 
+        "Modification": "rev", 
+        "RevisionNumber": 3.0, 
+        "Northing": 664970.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.247928160432059, 
+          55.88898447135651
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Ashfield Rail Station", 
+        "TiplocCode": "ASFIELD", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "ASF", 
+        "ModificationDateTime": "2006-09-18T18:24:34", 
+        "Easting": 259427.0, 
+        "AtcoCode": "9100ASFIELD", 
+        "Modification": "rev", 
+        "RevisionNumber": 2.0, 
+        "Northing": 668485.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.112396806918744, 
+          55.844556641345285
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Baillieston Rail Station", 
+        "TiplocCode": "BALISTN", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "BIO", 
+        "ModificationDateTime": "2011-08-22T17:03:04", 
+        "Easting": 267750.0, 
+        "AtcoCode": "9100BALISTN", 
+        "Modification": "rev", 
+        "RevisionNumber": 2.0, 
+        "Northing": 663275.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.223086065112936, 
+          55.85676272091957
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Bellgrove Rail Station", 
+        "TiplocCode": "BLGRVE", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "BLG", 
+        "ModificationDateTime": "2011-07-07T16:17:02", 
+        "Easting": 260865.0, 
+        "AtcoCode": "9100BLGRVE", 
+        "Modification": "rev", 
+        "RevisionNumber": 2.0, 
+        "Northing": 664850.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.221716007006252, 
+          55.87755077263941
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Barnhill Rail Station", 
+        "TiplocCode": "BNHL", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "BNL", 
+        "ModificationDateTime": "2011-07-07T16:17:02", 
+        "Easting": 261025.0, 
+        "AtcoCode": "9100BNHL", 
+        "Modification": "rev", 
+        "RevisionNumber": 2.0, 
+        "Northing": 667160.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.22476893448231, 
+          55.84902019410983
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Bridgeton Rail Station", 
+        "TiplocCode": "BRIDGTN", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "BDG", 
+        "ModificationDateTime": "2011-07-07T16:17:02", 
+        "Easting": 260732.0, 
+        "AtcoCode": "9100BRIDGTN", 
+        "Modification": "rev", 
+        "RevisionNumber": 2.0, 
+        "Northing": 663992.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.156884715591167, 
+          55.834391780422905
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Carmyle Rail Station", 
+        "TiplocCode": "CARMYLE", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "CML", 
+        "ModificationDateTime": "2006-09-18T18:24:34", 
+        "Easting": 264930.0, 
+        "AtcoCode": "9100CARMYLE", 
+        "Modification": "rev", 
+        "RevisionNumber": 1.0, 
+        "Northing": 662230.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.259254391209354, 
+          55.81772263386803
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Cathcart Rail Station", 
+        "TiplocCode": "CCRT", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "CCT", 
+        "ModificationDateTime": "2006-09-18T18:24:34", 
+        "Easting": 258460.0, 
+        "AtcoCode": "9100CCRT", 
+        "Modification": "rev", 
+        "RevisionNumber": 1.0, 
+        "Northing": 660580.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.339419700831646, 
+          55.852627865643036
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Cardonald Rail Station", 
+        "TiplocCode": "CDNL", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "CDO", 
+        "ModificationDateTime": "2006-09-18T18:24:34", 
+        "Easting": 253570.0, 
+        "AtcoCode": "9100CDNL", 
+        "Modification": "rev", 
+        "RevisionNumber": 1.0, 
+        "Northing": 664630.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.268537608579113, 
+          55.86474175274245
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Charing Cross (Glasgow) Rail Station", 
+        "TiplocCode": "CHRNGXG", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "CHC", 
+        "ModificationDateTime": "2006-09-18T18:24:34", 
+        "Easting": 258050.0, 
+        "AtcoCode": "9100CHRNGXG", 
+        "Modification": "rev", 
+        "RevisionNumber": 1.0, 
+        "Northing": 665830.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.333019511822404, 
+          55.83755847379357
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Corkerhill Rail Station", 
+        "TiplocCode": "CKHL", 
+        "CreationDateTime": "2005-04-04T00:00:00", 
+        "CrsCode": "CKH", 
+        "ModificationDateTime": "2006-09-18T18:24:34", 
+        "Easting": 253914.0, 
+        "AtcoCode": "9100CKHL", 
+        "Modification": "rev", 
+        "RevisionNumber": 1.0, 
+        "Northing": 662940.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.177278523218411, 
+          55.854930391933614
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Carntyne Rail Station", 
+        "TiplocCode": "CNTY", 
+        "CreationDateTime": "2005-04-04T00:00:00", 
+        "CrsCode": "CAY", 
+        "ModificationDateTime": "2011-07-07T16:17:02", 
+        "Easting": 263725.0, 
+        "AtcoCode": "9100CNTY", 
+        "Modification": "rev", 
+        "RevisionNumber": 2.0, 
+        "Northing": 664555.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.363405693650154, 
+          55.842371556797005
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Crookston Rail Station", 
+        "TiplocCode": "CROKSTN", 
+        "CreationDateTime": "2005-04-04T00:00:00", 
+        "CrsCode": "CKT", 
+        "ModificationDateTime": "2011-07-07T16:17:02", 
+        "Easting": 252030.0, 
+        "AtcoCode": "9100CROKSTN", 
+        "Modification": "rev", 
+        "RevisionNumber": 2.0, 
+        "Northing": 663540.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.255528507249442, 
+          55.833341267740906
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Crosshill Rail Station", 
+        "TiplocCode": "CROSSHL", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "COI", 
+        "ModificationDateTime": "2006-09-18T18:24:34", 
+        "Easting": 258750.0, 
+        "AtcoCode": "9100CROSSHL", 
+        "Modification": "rev", 
+        "RevisionNumber": 1.0, 
+        "Northing": 662310.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.283038127740551, 
+          55.834002159375196
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Crossmyloof Rail Station", 
+        "TiplocCode": "CRSMYLF", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "CMY", 
+        "ModificationDateTime": "2006-09-18T18:24:34", 
+        "Easting": 257030.0, 
+        "AtcoCode": "9100CRSMYLF", 
+        "Modification": "rev", 
+        "RevisionNumber": 1.0, 
+        "Northing": 662440.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.308294202962704, 
+          55.89361978970175
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Kelvindale Rail Station", 
+        "TiplocCode": "DAWSHLM", 
+        "CreationDateTime": "2005-10-03T00:00:00", 
+        "CrsCode": "KVD", 
+        "ModificationDateTime": "2011-07-07T16:17:02", 
+        "Easting": 255670.0, 
+        "AtcoCode": "9100DAWSHLM", 
+        "Modification": "rev", 
+        "RevisionNumber": 2.0, 
+        "Northing": 669125.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.216420454280498, 
+          55.84214193113675
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Dalmarnock Rail Station", 
+        "TiplocCode": "DLMRNOK", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "DAK", 
+        "ModificationDateTime": "2006-09-18T18:24:34", 
+        "Easting": 261230.0, 
+        "AtcoCode": "9100DLMRNOK", 
+        "Modification": "rev", 
+        "RevisionNumber": 1.0, 
+        "Northing": 663210.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.361606867942947, 
+          55.904877989431334
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Drumchapel Rail Station", 
+        "TiplocCode": "DRMCHPL", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "DMC", 
+        "ModificationDateTime": "2006-09-18T18:24:34", 
+        "Easting": 252380.0, 
+        "AtcoCode": "9100DRMCHPL", 
+        "Modification": "rev", 
+        "RevisionNumber": 2.0, 
+        "Northing": 670490.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.211758202540461, 
+          55.85849493515708
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Duke Street Rail Station", 
+        "TiplocCode": "DUKEST", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "DST", 
+        "ModificationDateTime": "2006-09-18T18:24:34", 
+        "Easting": 261580.0, 
+        "AtcoCode": "9100DUKEST", 
+        "Modification": "rev", 
+        "RevisionNumber": 1.0, 
+        "Northing": 665020.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.299961516946146, 
+          55.84470691055016
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Dumbreck Rail Station", 
+        "TiplocCode": "DUMBRCK", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "DUM", 
+        "ModificationDateTime": "2011-07-07T16:17:02", 
+        "Easting": 256010.0, 
+        "AtcoCode": "9100DUMBRCK", 
+        "Modification": "rev", 
+        "RevisionNumber": 3.0, 
+        "Northing": 663666.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.105873335799282, 
+          55.85981362492278
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Easterhouse Rail Station", 
+        "TiplocCode": "ESHS", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "EST", 
+        "ModificationDateTime": "2006-09-18T18:24:34", 
+        "Easting": 268210.0, 
+        "AtcoCode": "9100ESHS", 
+        "Modification": "rev", 
+        "RevisionNumber": 1.0, 
+        "Northing": 664960.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.282308284412575, 
+          55.861610722038556
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Exhibition Centre (Glasgow) Rail Station", 
+        "TiplocCode": "EXHIBTC", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "EXG", 
+        "ModificationDateTime": "2011-07-18T17:01:58", 
+        "Easting": 257177.0, 
+        "AtcoCode": "9100EXHIBTC", 
+        "Modification": "rev", 
+        "RevisionNumber": 2.0, 
+        "Northing": 665510.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.12816047303999, 
+          55.85529553435228
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Garrowhill Rail Station", 
+        "TiplocCode": "GARROWH", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "GAR", 
+        "ModificationDateTime": "2006-09-18T18:24:34", 
+        "Easting": 266800.0, 
+        "AtcoCode": "9100GARROWH", 
+        "Modification": "rev", 
+        "RevisionNumber": 1.0, 
+        "Northing": 664500.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.256359574413957, 
+          55.859815268589166
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Glasgow Central Rail Station", 
+        "TiplocCode": "GLGC", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "GLC", 
+        "ModificationDateTime": "2007-08-24T15:05:14", 
+        "Easting": 258794.0, 
+        "AtcoCode": "9100GLGC", 
+        "Modification": "rev", 
+        "RevisionNumber": 3.0, 
+        "Northing": 665257.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.257208136049295, 
+          55.858739055570965
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Glasgow Central Low Level Rail Station", 
+        "TiplocCode": "GLGCLL", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "GCL", 
+        "ModificationDateTime": "2011-08-12T14:57:45", 
+        "Easting": 258737.0, 
+        "AtcoCode": "9100GLGCLL", 
+        "Modification": "rev", 
+        "RevisionNumber": 2.0, 
+        "Northing": 665139.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.23883200181383, 
+          55.85962314265805
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "High Street (Glasgow) Rail Station", 
+        "TiplocCode": "GLGHST", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "HST", 
+        "ModificationDateTime": "2006-09-18T18:24:34", 
+        "Easting": 259890.0, 
+        "AtcoCode": "9100GLGHST", 
+        "Modification": "rev", 
+        "RevisionNumber": 1.0, 
+        "Northing": 665200.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.250171260644096, 
+          55.862247647600384
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Glasgow Queen Street Rail Station", 
+        "TiplocCode": "GLGQHL", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "GLQ", 
+        "ModificationDateTime": "2010-02-18T14:19:13", 
+        "Easting": 259190.0, 
+        "AtcoCode": "9100GLGQHL", 
+        "Modification": "rev", 
+        "RevisionNumber": 3.0, 
+        "Northing": 665515.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.249365281853932, 
+          55.86240620228796
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Glasgow Queen Street Low Level Rail Station", 
+        "TiplocCode": "GLGQLL", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "GQL", 
+        "ModificationDateTime": "2008-04-25T15:26:31", 
+        "Easting": 259241.0, 
+        "AtcoCode": "9100GLGQLL", 
+        "Modification": "rev", 
+        "RevisionNumber": 2.0, 
+        "Northing": 665531.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.36373349321863, 
+          55.88775857121314
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Garscadden Rail Station", 
+        "TiplocCode": "GSCD", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "GRS", 
+        "ModificationDateTime": "2006-09-18T18:24:34", 
+        "Easting": 252182.0, 
+        "AtcoCode": "9100GSCD", 
+        "Modification": "rev", 
+        "RevisionNumber": 1.0, 
+        "Northing": 668590.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.353739251891988, 
+          55.85424233446947
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Hillington East Rail Station", 
+        "TiplocCode": "HLNGTNE", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "HLE", 
+        "ModificationDateTime": "2011-07-07T16:17:02", 
+        "Easting": 252680.0, 
+        "AtcoCode": "9100HLNGTNE", 
+        "Modification": "rev", 
+        "RevisionNumber": 2.0, 
+        "Northing": 664840.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.370311084231697, 
+          55.856081432699334
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Hillington West Rail Station", 
+        "TiplocCode": "HLNGTNW", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "HLW", 
+        "ModificationDateTime": "2006-09-18T18:24:34", 
+        "Easting": 251650.0, 
+        "AtcoCode": "9100HLNGTNW", 
+        "Modification": "rev", 
+        "RevisionNumber": 1.0, 
+        "Northing": 665080.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.313391249451316, 
+          55.87981643234694
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Hyndland Rail Station", 
+        "TiplocCode": "HYNDLND", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "HYN", 
+        "ModificationDateTime": "2006-09-18T18:24:34", 
+        "Easting": 255300.0, 
+        "AtcoCode": "9100HYNDLND", 
+        "Modification": "rev", 
+        "RevisionNumber": 1.0, 
+        "Northing": 667600.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.323641887461203, 
+          55.88276932838321
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Jordanhill Rail Station", 
+        "TiplocCode": "JORDANH", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "JOR", 
+        "ModificationDateTime": "2011-07-07T16:17:02", 
+        "Easting": 254670.0, 
+        "AtcoCode": "9100JORDANH", 
+        "Modification": "rev", 
+        "RevisionNumber": 2.0, 
+        "Northing": 667950.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.323972957010955, 
+          55.813370302383966
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Kennishead Rail Station", 
+        "TiplocCode": "KENISHD", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "KNS", 
+        "ModificationDateTime": "2011-07-07T16:17:02", 
+        "Easting": 254390.0, 
+        "AtcoCode": "9100KENISHD", 
+        "Modification": "rev", 
+        "RevisionNumber": 2.0, 
+        "Northing": 660230.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.24523339438955, 
+          55.8195974103929
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Kings Park Rail Station", 
+        "TiplocCode": "KGPK", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "KGP", 
+        "ModificationDateTime": "2011-07-07T16:17:02", 
+        "Easting": 259345.0, 
+        "AtcoCode": "9100KGPK", 
+        "Modification": "rev", 
+        "RevisionNumber": 2.0, 
+        "Northing": 660760.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.281402469477033, 
+          55.89740200458152
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Gilshochill Rail Station", 
+        "TiplocCode": "LAMBH", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "GSC", 
+        "ModificationDateTime": "2011-07-07T16:17:02", 
+        "Easting": 257365.0, 
+        "AtcoCode": "9100LAMBH", 
+        "Modification": "rev", 
+        "RevisionNumber": 3.0, 
+        "Northing": 669490.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.276060397941865, 
+          55.8211878938784
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Langside Rail Station", 
+        "TiplocCode": "LNSD", 
+        "CreationDateTime": "2005-03-18T00:00:00", 
+        "CrsCode": "LGS", 
+        "ModificationDateTime": "2006-09-18T18:24:34", 
+        "Easting": 257420.0, 
+        "AtcoCode": "9100LNSD", 
+        "Modification": "rev", 
+        "RevisionNumber": 1.0, 
+        "Northing": 661000.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.287413006770948, 
+          55.83778597519902
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Maxwell Park Rail Station", 
+        "TiplocCode": "MAXWLPK", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "MAX", 
+        "ModificationDateTime": "2006-09-18T18:24:34", 
+        "Easting": 256770.0, 
+        "AtcoCode": "9100MAXWLPK", 
+        "Modification": "rev", 
+        "RevisionNumber": 1.0, 
+        "Northing": 662870.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.132370321149235, 
+          55.84025716844738
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Mount Vernon Rail Station", 
+        "TiplocCode": "MNTVRNN", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "MTV", 
+        "ModificationDateTime": "2011-07-07T16:17:02", 
+        "Easting": 266485.0, 
+        "AtcoCode": "9100MNTVRNN", 
+        "Modification": "rev", 
+        "RevisionNumber": 2.0, 
+        "Northing": 662835.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.299465404150523, 
+          55.89769508627583
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Maryhill Rail Station", 
+        "TiplocCode": "MRYHILL", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "MYH", 
+        "ModificationDateTime": "2010-10-13T15:31:21", 
+        "Easting": 256237.0, 
+        "AtcoCode": "9100MRYHILL", 
+        "Modification": "rev", 
+        "RevisionNumber": 2.0, 
+        "Northing": 669560.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.347021225173923, 
+          55.8408875632265
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Mosspark Rail Station", 
+        "TiplocCode": "MSSPARK", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "MPK", 
+        "ModificationDateTime": "2011-07-07T16:17:02", 
+        "Easting": 253050.0, 
+        "AtcoCode": "9100MSSPARK", 
+        "Modification": "rev", 
+        "RevisionNumber": 2.0, 
+        "Northing": 663340.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.259849580796572, 
+          55.82661039445534
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Mount Florida Rail Station", 
+        "TiplocCode": "MTFL", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "MFL", 
+        "ModificationDateTime": "2011-02-14T14:58:53", 
+        "Easting": 258455.0, 
+        "AtcoCode": "9100MTFL", 
+        "Modification": "rev", 
+        "RevisionNumber": 2.0, 
+        "Northing": 661570.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.273112154136149, 
+          55.809512280121865
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Muirend Rail Station", 
+        "TiplocCode": "MUIREND", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "MUI", 
+        "ModificationDateTime": "2011-07-07T16:17:02", 
+        "Easting": 257562.0, 
+        "AtcoCode": "9100MUIREND", 
+        "Modification": "rev", 
+        "RevisionNumber": 2.0, 
+        "Northing": 659695.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.358689983739479, 
+          55.81199002309118
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Nitshill Rail Station", 
+        "TiplocCode": "NITSH", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "NIT", 
+        "ModificationDateTime": "2006-09-18T18:24:34", 
+        "Easting": 252210.0, 
+        "AtcoCode": "9100NITSH", 
+        "Modification": "rev", 
+        "RevisionNumber": 1.0, 
+        "Northing": 660150.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.341623744382007, 
+          55.81222638606194
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Priesthill & Darnley Rail Station", 
+        "TiplocCode": "PHLD", 
+        "CreationDateTime": "2005-03-17T00:00:00", 
+        "CrsCode": "PTL", 
+        "ModificationDateTime": "2006-09-18T18:24:34", 
+        "Easting": 253280.0, 
+        "AtcoCode": "9100PHLD", 
+        "Modification": "rev", 
+        "RevisionNumber": 1.0, 
+        "Northing": 660140.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.267321269405741, 
+          55.84112425207083
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Pollokshields East Rail Station", 
+        "TiplocCode": "PLKLHDE", 
+        "CreationDateTime": "2005-03-18T00:00:00", 
+        "CrsCode": "PLE", 
+        "ModificationDateTime": "2006-09-18T18:24:34", 
+        "Easting": 258040.0, 
+        "AtcoCode": "9100PLKLHDE", 
+        "Modification": "rev", 
+        "RevisionNumber": 1.0, 
+        "Northing": 663200.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.274472888903688, 
+          55.837756310612654
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Pollokshields West Rail Station", 
+        "TiplocCode": "PLKLHDW", 
+        "CreationDateTime": "2005-03-18T00:00:00", 
+        "CrsCode": "PLW", 
+        "ModificationDateTime": "2006-09-18T18:24:34", 
+        "Easting": 257580.0, 
+        "AtcoCode": "9100PLKLHDW", 
+        "Modification": "rev", 
+        "RevisionNumber": 1.0, 
+        "Northing": 662840.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.285606575518055, 
+          55.82469615658076
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Pollokshaws East Rail Station", 
+        "TiplocCode": "PLKSHWE", 
+        "CreationDateTime": "2005-04-04T00:00:00", 
+        "CrsCode": "PWE", 
+        "ModificationDateTime": "2011-07-07T16:17:02", 
+        "Easting": 256835.0, 
+        "AtcoCode": "9100PLKSHWE", 
+        "Modification": "rev", 
+        "RevisionNumber": 2.0, 
+        "Northing": 661410.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.300328922995992, 
+          55.8238822964356
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Pollokshaws West Rail Station", 
+        "TiplocCode": "PLKSHWW", 
+        "CreationDateTime": "2005-03-18T00:00:00", 
+        "CrsCode": "PWW", 
+        "ModificationDateTime": "2006-09-18T18:24:34", 
+        "Easting": 255910.0, 
+        "AtcoCode": "9100PLKSHWW", 
+        "Modification": "rev", 
+        "RevisionNumber": 1.0, 
+        "Northing": 661350.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.257227860247196, 
+          55.890207480401145
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Possilpark & Parkhouse Rail Station", 
+        "TiplocCode": "POSILPK", 
+        "CreationDateTime": "2005-03-18T00:00:00", 
+        "CrsCode": "PPK", 
+        "ModificationDateTime": "2011-07-07T16:17:02", 
+        "Easting": 258850.0, 
+        "AtcoCode": "9100POSILPK", 
+        "Modification": "rev", 
+        "RevisionNumber": 2.0, 
+        "Northing": 668640.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.307528763554251, 
+          55.869949125477
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Partick Rail Station", 
+        "TiplocCode": "PTCK", 
+        "CreationDateTime": "2005-03-18T00:00:00", 
+        "CrsCode": "PTK", 
+        "ModificationDateTime": "2006-09-18T18:24:34", 
+        "Easting": 255630.0, 
+        "AtcoCode": "9100PTCK", 
+        "Modification": "rev", 
+        "RevisionNumber": 1.0, 
+        "Northing": 666490.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.265468381080462, 
+          55.835360763160544
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Queens Park (Glasgow) Rail Station", 
+        "TiplocCode": "QUNPARK", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "QPK", 
+        "ModificationDateTime": "2011-07-07T16:17:02", 
+        "Easting": 258135.0, 
+        "AtcoCode": "9100QUNPARK", 
+        "Modification": "rev", 
+        "RevisionNumber": 2.0, 
+        "Northing": 662555.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.351615315488376, 
+          55.88520422372664
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Scotstounhill Rail Station", 
+        "TiplocCode": "SCTSTNH", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "SCH", 
+        "ModificationDateTime": "2006-09-18T18:24:34", 
+        "Easting": 252930.0, 
+        "AtcoCode": "9100SCTSTNH", 
+        "Modification": "rev", 
+        "RevisionNumber": 1.0, 
+        "Northing": 668280.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.158747622526678, 
+          55.85359412459589
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Shettleston Rail Station", 
+        "TiplocCode": "SHTLSTN", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "SLS", 
+        "ModificationDateTime": "2006-09-18T18:24:34", 
+        "Easting": 264880.0, 
+        "AtcoCode": "9100SHTLSTN", 
+        "Modification": "rev", 
+        "RevisionNumber": 1.0, 
+        "Northing": 664370.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.291065038980206, 
+          55.82926867235284
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Shawlands Rail Station", 
+        "TiplocCode": "SHWLNDS", 
+        "CreationDateTime": "2003-11-04T00:00:00", 
+        "CrsCode": "SHL", 
+        "ModificationDateTime": "2006-09-18T18:24:34", 
+        "Easting": 256510.0, 
+        "AtcoCode": "9100SHWLNDS", 
+        "Modification": "rev", 
+        "RevisionNumber": 1.0, 
+        "Northing": 661930.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.229246184031988, 
+          55.88199869556041
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Springburn Rail Station", 
+        "TiplocCode": "SPRNGBN", 
+        "CreationDateTime": "2005-04-04T00:00:00", 
+        "CrsCode": "SPR", 
+        "ModificationDateTime": "2011-07-07T16:17:02", 
+        "Easting": 260570.0, 
+        "AtcoCode": "9100SPRNGBN", 
+        "Modification": "rev", 
+        "RevisionNumber": 2.0, 
+        "Northing": 667670.0
+      }
+    }, 
+    {
+      "geometry": {
+        "type": "Point", 
+        "coordinates": [
+          -4.29025760793176, 
+          55.89890044172463
+        ]
+      }, 
+      "type": "Feature", 
+      "properties": {
+        "StationNameLang": null, 
+        "GridType": "U", 
+        "StationName": "Summerston Rail Station", 
+        "TiplocCode": "SUMRSTN", 
+        "CreationDateTime": "2005-03-18T00:00:00", 
+        "CrsCode": "SUM", 
+        "ModificationDateTime": "2011-07-07T16:17:02", 
+        "Easting": 256817.0, 
+        "AtcoCode": "9100SUMRSTN", 
+        "Modification": "rev", 
+        "RevisionNumber": 3.0, 
+        "Northing": 669675.0
+      }
+    }
+  ]
+}

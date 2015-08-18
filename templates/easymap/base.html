@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html>
+	<head lang="en">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<meta charset="utf-8">
+		<title>EasyMap</title>
+		
+		{% block head_block %}
+		{% endblock %}
+		<link rel="stylesheet" href="{% static "css/base.css" %}" /> <!-- CSS -->
+		<link rel="stylesheet" href="{% static "css/base-b.css" %}" /> <!-- CSS -->
+		<link rel="stylesheet" href="{% static "css/jquery.dataTables.css" %}"/>
+		<link rel="stylesheet" href="{% static "css/messi.min.css" %}"/>
+		
+   	<!-- // <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script> -->
+	</head>
+
+	<body>
+		<nav class="navbar navbar-default">
+	  	<div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="/easymap/">EasyMap Glasgow</a>
+	      <!-- <img id="logo" src="{% static "images/logo.png" %}" alt="Picture of Logo" /> -->
+	    </div>
+	    <div id="vertical-line"></div>
+	    <div id="numbers-box" data-numbers="">
+	    </div>
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
+<!-- 	        <li class="active"><a id="link1" href="">Link1 <span class="sr-only">(current)</span></a></li>
+	        <li><a href="/easymap/category?category_name=library">Link2</a></li> -->
+	        <li id="home-li"><a href="/easymap/"><img id="home" src="{% static "images/home.png" %}" alt="Picture of home"/></a></li>
+	      </ul>
+
+			{% block nav_block %}
+ 	  		{% endblock %}
+	    </div>
+	  	</div>
+		</nav>
+
+		<div class="main-container">
+		{% block map_block %}
+		{% endblock %}
+    
+<!--     	<p id="footer-info">  (c) "Easymap Glasgow" | Design by <a href="moosedavid@gmail.com">JIA LIU</a></p> -->
+			<!-- <small>© Copyright 2058, Example Corporation</small> -->
+		</div>
+	
+
+	<!-- The following javascripts are used to display googlemap and the jquery. -->
+	<footer>
+    <script src="{% static "js/jquery-1.11.3.min.js" %}"></script>
+   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+   	<script src="{% static "js/leftmenu.js" %}"></script>
+    <script src="{% static "js/jquery.dataTables.min.js" %}"></script>
+    <script src="{% static "js/messi.min.js" %}"></script>
+    {% block footer_block%}
+    {% endblock %}
+    
+  	<!-- <p>Contact information: <a href="mailto:someone@example.com">someone@example.com</a>.</p> -->
+	</footer>
+
+	</body>
+	
+</html>

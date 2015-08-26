@@ -1,4 +1,7 @@
 
+
+
+
 #chart-container {
     position: relative;
     width: 100%; 
@@ -87,3 +90,17 @@
     margin: 0px auto;
 }
 
+/* Below is for styling the error page. */
+#error-div {
+    position: relative;
+    top: 20%;
+    text-align: center;
+}
+#error-pic {
+    width: 15%;
+    height: 15%;
+    /*margin: 0px auto;*/
+}
+.error-headline {
+    margin: 0px auto;
+}

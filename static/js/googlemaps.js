@@ -2,13 +2,14 @@
 var geometry = "";
 var mainMap, geocoder, markerBounds, home_icon, noormal_icon, user_icon, bounceTimer;
 var glasgowUni = new google.maps.LatLng(55.872100, -4.287835);
+// This is used temporarily center the map when user input locations / routes.
+// var tempCenter = "";
 
 // Hold all markers on map.
 var markers = [];
 // Hold all infowindows on map.
 // var currentInfoWindow = [];
 var currentInfoWindow = null;
-
 
 
 /**
@@ -137,7 +138,6 @@ CenterControl.prototype.setCenter = function(center) {
 function geoLocating() {
 
   // var infoWindow = new google.maps.InfoWindow({map: mainMap});
-
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -145,7 +145,6 @@ function geoLocating() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-
       dropMarker(pos, "your location.", user_icon);
 
       // infoWindow.setPosition(pos);
@@ -327,9 +326,9 @@ function displayLocations(location_array, postcode, address, locationName) {
     }, function(results, status) {
     if (status == google.maps.GeocoderStatus.OK) {
 
+      mainMap.setCenter(results[0].geometry.location);
       marker = dropMarker(results[0].geometry.location, locationName, normal_icon);
 
-      // mainMap.setCenter(results[0].geometry.location);
       // var marker = new google.maps.Marker({
       //   icon: image_icon,
       //   map: mainMap,
@@ -342,9 +341,19 @@ function displayLocations(location_array, postcode, address, locationName) {
       new Messi('Geocode was not successful for the following reason: ' + status, {title: 'We Ran An Error..', titleClass: 'anim error', center: 'true', buttons: [{id: 0, label: 'Close', val: 'X'}]});
     }
 
-    // ************************************************
-    // The following part is aimed for displaying the information on the locations.
-    // this content_string is created for holding all informtation about one location.
+  if(locations.length != 0) {
+    generateInfoWindow(locations, locationName, marker);
+  }
+
+  });
+
+}
+
+
+// ************************************************
+// The following part is aimed for displaying the information on the locations.
+// this content_string is created for holding all informtation about one location.
+function generateInfoWindow(locations, locationName, marker) {
     var content_string = '<div id="marker-content">' +
       '<div id="siteNotice">' + '</div>' +
       '<h4 id="firstHeading" class="info-window-heading">' + locationName + '</h4>' +
@@ -384,10 +393,8 @@ function displayLocations(location_array, postcode, address, locationName) {
       // currentInfoWindow.push(infowindow);
       currentInfoWindow = infowindow;
     });
-
-  });
-
 }
+
 
 // This function is for dropping makers.
 // parameters are 1. lat&lng, 2.location's name, 3.the specific image icon.
@@ -412,9 +419,8 @@ function dropMarker(position, locationName, image_icon) {
       }, 3500);
       newMarker.setAnimation(google.maps.Animation.BOUNCE);
     }
-
+// 
   });
-
 
   // toggleBounce(newMarker));
   markers.push(newMarker);
@@ -429,7 +435,6 @@ function toggleBounce(marker) {
 // This function is for clearing all markers on map.
 function clearMarkers() {
     var single_marker;
-
     // Pop each and set each null.
     while( single_marker = markers.pop() ){
         single_marker.setMap(null);
@@ -580,7 +585,9 @@ function initialize() {
   centerControlDiv.index = 1;
   mainMap.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(centerControlDiv);
 
-
+  setTimeout(function(){
+    $('#map-inputs').show("slow");
+  },500);
 //   google.maps.event.addListener(marker_glasgowUni, 'mouseover', function() {
 //   if (this.getAnimation() == null || typeof this.getAnimation() === 'undefined') {        
        
@@ -612,20 +619,54 @@ google.maps.event.addListener(mainMap, 'click', closeInfoWindow);
 // google.maps.event.addDomListener(window, 'load', initialize);
 
 
+// Callback function.
+function test(a, b, test2) {
+  var c = 0;
+
+  setTimeout(function() {
+    var c = a+b;
+    var i = 1;
+
+    alert("test1 "+ c);    
+  }, 100);
+
+  test2(c);
+  // return c;
+}
+
+function test2(c) {
+  // var c = c;
+  alert("test2 "+c);
+}
+
+// $("#whats-new-btn").click(function (){
+//     var c = test(1,2,test2);
+//     // test2(c);
+// });
+
 // This jQuery is adding listener for clicking on show map button.
-$('.test-btn').click(function() {
+$('#show-map').click(function() {
   // alert();
     $('#alter').fadeOut('fast');
       document.getElementById("alter").setAttribute("id", "map-canvas");
     $('#map-canvas').fadeIn('fast');
-        initialize();
+    
+    initialize();
 
+    setTimeout(function(){
+      $('#map-inputs').show("slow");
+    },500);
     // var addr = document.getElementById("inputSmall").value;
     // alert(addr);
-
     // displayLocations([],addr,addr,"Test");
-
 })
+
+$('#map-submit').click(function() {
+  var location = $('#location-input').val();
+  // alert(location);
+  displayLocations([],location,location,location);
+})
+
 
 
 

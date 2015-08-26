@@ -35,6 +35,12 @@ def get_five_radom_digits(locations_list_length, locations_list):
 	index_list = [index_1, index_2, index_3, index_4, index_5]
 	return index_list
 
+
+def error_page(request):
+
+	return render(request, 'easymap/error.html')
+
+
 # Auxiliary function for creating a new query.
 def save_query(query_type, keywords, content):
 
@@ -62,7 +68,7 @@ def save_query(query_type, keywords, content):
 # This function is for user searching.
 def query_search(request):
 	
-	print request.POST['search-content']
+	# print request.POST['search-content']
 	content = request.POST['search-content']
 
 	# Below is a RegEx for filtering harmful inputs.
@@ -74,7 +80,7 @@ def query_search(request):
 
 	if result is None:
 # !! NEED ERROR Page
-		return HttpResponse("ERROR")
+		return render(request, 'easymap/error.html')
 
 	# Except the content with special chars, the rest is mainly just only one word.
 	query_type = 'single-keyword'
@@ -85,7 +91,7 @@ def query_search(request):
 	# get the category and the locations the user needs
 	locations_needed = AllLocations.objects.filter(name__icontains=query.keywords)
 
-	print locations_needed
+	# print locations_needed
 
 	context_dict = {}
 
@@ -228,7 +234,7 @@ def get_locations_list(indexes, request_string):
 		# c = Category.objects.all()
 		the_right_cat = ""
 		# Here used a Field Type approach to filter and get the only one category.
-		the_right_cat = Category.objects.get(related_names__icontains=request_string)
+		the_right_cat = Category.objects.get(id_name__icontains=request_string)
 
 		if the_right_cat == "":
 			return "False"
@@ -259,16 +265,18 @@ def get_locations_list(indexes, request_string):
 def show_popular(request):
 
 	# minus mark means descending order
-	popular_queries = Query.objects.order_by('-frequency')[:2]
+	popular_queries = Query.objects.order_by('-frequency')[:5]
 
-	queries_str = ""
-
+	queries = []
 	for single_query in popular_queries:
-		queries_str += "<h3>"+str(single_query.content)+"<br/>"+str(single_query.frequency)+"</h3>"
+		queries.append({"name": single_query.content,"data": single_query.frequency})
 
-	print queries_str
-	return HttpResponse(queries_str)
-
+	queries_json = json.dumps(queries)
+	return HttpResponse(queries_json)
+	# print queries_str
+	# queries_str = ""
+	# for single_query in popular_queries:
+	# 	queries_str += "<h3>"+str(single_query.content)+"<br/>"+str(single_query.frequency)+"</h3>"
 
 #  For displaying newest categorys in the database.
 def show_news(request):
@@ -282,34 +290,33 @@ def show_news(request):
 		# print single_category
 		categorys_str += "<h3>"+str(single_category.id_name)+" -- "+str(single_category.id)+"<br/>"+str(single_category.creating_date)+"</h3>"
 
+	# categorys = []
+
+	# for single_category in the_newest_categorys:
+	# 	categorys.append({'name':str(single_category.id_name),'':})
+
+
 	return HttpResponse(categorys_str)
 
 
 
 # For displaying Category Library
 def show_categorys(request):
-	# context_dict={}
-
-	# context_dict['categorys'] = Category.objects.all()
-
-	# return render(request,'easymap/categorys.html',context_dict)
+	
 	categorys_str = "<div id='cat-container'><h3 id='cat-title' class='headline'>Category Library</h3><hr>"
 
 	categorys = Category.objects.all()
 
-  # $( "div" ).first().show( "fast", function showNext() {
-  #   $( this ).next( "div" ).show( "fast", showNext );
-  # });
-
 	for single_category in categorys:
-		# categorys_str += '<div class="cat-divs"><a class="btn btn-warning cat-btns" href="/easymap/category?category_name='+str(single_category.id_name)+'">'+str(single_category.id_name)+'</a></div>'
 		categorys_str += '<a class="btn btn-warning cat-btns" href="/easymap/category?category_name='+str(single_category.id_name)+'">'+str(single_category.id_name)+'</a>'
 
 	categorys_str += "</div>"
-# href="easy/category?category_name='+str(single_category.id_name)+'
-	# string = '<div class="divs"><p>Hello World</p></div><div class="divs"><p>Hello World</p></div><div class="divs"><p>Hello World</p></div><div class="divs"><p>Hello World</p></div>'
 
 	return HttpResponse(categorys_str)
+# categorys_str += '<div class="cat-divs"><a class="btn btn-warning cat-btns" href="/easymap/category?category_name='+str(single_category.id_name)+'">'+str(single_category.id_name)+'</a></div>'
+# href="easy/category?category_name='+str(single_category.id_name)+'
+# string = '<div class="divs"><p>Hello World</p></div><div class="divs"><p>Hello World</p></div><div class="divs"><p>Hello World</p></div><div class="divs"><p>Hello World</p></div>'
+
 
 
 # For displaying table page.

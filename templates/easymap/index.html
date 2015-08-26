@@ -7,19 +7,27 @@
     <script src="{% static "js/jquery-1.11.3.min.js" %}"></script>
 	<script type="text/javascript">
 
-	// This is used to check if there is any map-need askings.
+	// This is used to check if there is any location response.
 	window.onload = function() {
-		
 		data = document.getElementById("geometry").getAttribute("data-info");
-// // !!! NEEDS VERIFYING !!!!
 			if (data != "None"){
-				// alert("entering GMap..");
 				initialize();
 				splitDataString();
 			}
+// // !!! NEEDS VERIFYING !!!!
+			// alert();
+			// if ({{ locations_list }} != "None"){
+				// alert("entering GMap..");
 			else {
-				// alert("No GMap!");
+			// 	// alert("No GMap!");
 			}
+
+		try {
+      		TagCanvas.Start('myCanvas');
+	    } catch(e) {
+	      // something went wrong, hide the canvas container
+	      document.getElementById('myCanvasContainer').style.display = 'none';
+	    }
 	}
 	
 // 	$(document).ready(function () {
@@ -29,6 +37,21 @@
 // 				splitDataString();
 // 			}
 // 	})
+
+	 // This is for the tags cloud in the home page.
+	 $(document).ready(function() {
+	   if( ! $('#myCanvas').tagcanvas({
+	     textColour : '#ffffff',
+	     outlineThickness : 1,
+	     maxSpeed : 0.03,
+	     depth : 0.75
+	   })) {
+	     // TagCanvas failed to load
+	     $('#myCanvasContainer').hide();
+	   }
+	   // your other jQuery stuff here...
+	 });
+
 	</script>
 
 	{% endblock %}
@@ -55,18 +78,18 @@
 
 	{% block map_block %}
 
-			<div class="left-menu collapse-group">
+		<div class="left-menu collapse-group">
 			<ul class="menu-ul">
 			<li><div id="search-box-container">
 				<div id="gradient"></div>
-				<form class="searchbox" action="/easymap/querysearch" method="POST"> {% csrf_token %}
+				<form class="searchbox" action="/easymap/querysearch" method="POST" onsubmit="return formValidating()"> {% csrf_token %}
 					<!-- var bla = $('#txt_name').val(); -->
-				        <input id="search-input" type="search" name="search-content" placeholder="Search Here.." />
-				        <button class="main-search-btn" type="submit" value="search">&nbsp;</button>
+				        <input id="search-input" type="search" name="search-content" placeholder="Search Here.." value=""/>
+				        <button id="searh-submit-btn" class="main-search-btn" type="submit" value="search">&nbsp;</button>
 				</form>
 				</div>
 			</li>
-			<li><a id="all-btn" class="btn btn-info menu-btn">All in library</a></li>
+			<li><a id="all-btn" class="btn btn-info menu-btn">Location Category</a></li>
 			<div class="whats-btn">
 				<li><a id="whats-new-btn" class="btn btn-info menu-btn-whats" href="/easymap/news/">What's New!</a></li>
 				<li><a id="whats-hot-btn" class="btn btn-info menu-btn-whats" href="/easymap/popular/">What's Hot!</a></li>
@@ -74,17 +97,37 @@
 			</ul>
 
 			<div class="extra-tool">
-				<div class="btn-group">
-				  <a href="#" class="btn btn-info test-btn"><img id="map-pic" src="{% static "images/map.png" %}" alt="Picture of Map" /></a>
-				  <a aria-expanded="false" href="#" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+				<!-- <div class="btn-group"> -->
+				 <div class="show-map-div">
+				 	<a id="show-map" class="btn btn-success">Show Map</a>
+				 	<a id="map-inputs" href="#" class="btn btn-success"><img id="map-pic" src="{% static "images/map.png" %}" alt="Picture of Map" /></a>
+				</div>
+				<!-- <form class="map-search-box" method="post"> {% csrf_token %} -->
+				  <ul class="map-collapse-bar collapse-group">
+				  	<li class="map-li collapse"><label class="control-label" for="inputSmall">Find Location</label>
+				  	<!-- <li class="map-li"></li> id="inputSmall"-->
+				  	<input class="form-control input-sm map-inputs" id="location-input" type="text" value=""></li>
+				  	<li class="map-li collapse"><label class="control-label" for="inputSmall">Find Route</label>
+				  	<!-- <li class="map-li"></li> -->
+				  	<input class="form-control input-sm map-inputs" id="route-input" type="text" value=""></li>
+				  	<li class="map-li collapse"><button id="map-submit" type="submit" value="Submit">Go</button>
+				  		<button id="" type="reset" value="Reset">Reset</button></li>
+				  </ul>
+				<!-- </form> -->
+				<!-- <div class="form-group"> -->
+
+				<!-- </div> -->
+
+
+<!-- 				  <a aria-expanded="false" href="#" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
 				  <ul class="dropdown-menu">
 				    <li><a href="#">Action</a></li>
 				    <li><a href="#">Another action</a></li>
 				    <li><a href="#">Something else here</a></li>
 				    <li class="divider"></li>
 				    <li><a href="#">Separated link</a></li>
-				  </ul>
-				</div>
+				  </ul> -->
+				<!-- </div> -->
 <!-- 				<div class="form-group input-box">
 				  <label class="control-label" for="inputSmall">Where is here</label>
 				  <input class="form-control input-sm" id="inputSmall" type="text" placeholder="Type Here.." value="">
@@ -92,10 +135,12 @@
 				</div> -->
 					 <!-- onclick="alert('HEHE #: '+$('#geometry').data('info'));" -->
 			</div>
+			
 				<!-- <a class="btn btn-info" href="/easymap/home">Show Map</a> -->
-			<a id="setting-btn" class="btn btn-warning" href=""><img id="setting-pic" src="{% static "images/settings.png" %}" alt="Picture of Setting" /></a>
-
+			<div class="setting-div">
+			<a id="setting-btn" class="btn btn-warning"><img id="setting-pic" src="{% static "images/settings.png" %}" alt="Picture of Setting" /></a>
 			</div>
+		</div>
 		
 
 <!-- 			
@@ -123,15 +168,22 @@
 		<!-- if there is queries then show the map, otherwise no. -->
 		{% if locations_list != None %}
 			<div id="map-canvas">
-
-
 		{% else %}
 			<div id="alter">
-				<div id="chart-container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto">
+				<div id="myCanvasContainer">
+					<!-- Do not change the size in CSS.. IDK.. -->
+				 <canvas width="300" height="300" id="myCanvas">
+				  <p>Anything in here will be replaced on browsers that support the canvas element</p>
+				    <ul>
+						<li><a href="http://www.google.com" target="_blank">Google</a></li>
+						<li><a href="/fish">Fish</a></li>
+						<li><a href="/chips">Chips</a></li>
+						<li><a href="/salt">Salt</a></li>
+						<li><a href="/vinegar">Vinegar</a></li>
+					</ul>
+				 </canvas>
 				</div>
-				<!-- {{ news }} -->
 		{% endif %}
-
 		</div>		
 
 	{% endblock %}
@@ -143,6 +195,7 @@
 	<script src="http://code.highcharts.com/highcharts.js"></script>
 	<!-- // <script src="http://code.highcharts.com/modules/exporting.js"></script> -->
 	<script src="{% static "js/charts-script.js" %}"></script>
+	<script src="{% static "js/jquery.tagcanvas.min.js" %}"> </script>
     {% endblock %}
 </body>
 

@@ -63,7 +63,7 @@
 				<div id="gradient"></div>
 				<form class="searchbox" action="/easymap/querysearch" method="POST" onsubmit="return formValidating()"> {% csrf_token %}
 					<!-- var bla = $('#txt_name').val(); -->
-				        <input id="search-input" type="search" name="search-content" placeholder="Search Here.." value=""/>
+				        <input id="search-input" type="search" name="search-content" placeholder="Search Here.."/>
 				        <button id="searh-submit-btn" class="main-search-btn" type="submit" value="search">&nbsp;</button>
 				</form>
 				</div>
@@ -153,16 +153,23 @@
 				 <canvas id="tagcloud-canvas" width="500" height="400">
 				  <p>Anything in here will be replaced on browsers that support the canvas element</p>
 				    <ul>
-						<li><a href="http://www.google.com" target="_blank">Google</a></li>
-						<li text="Fish"><a href="/fish">Fish</a></li>
-						<li><a href="/chips">Chips</a></li>
-						<li><a href="/salt">Salt</a></li>
-						<li><a href="/vinegar">Vinegar</a></li>
-						<li><a href="http://www.google.com" target="_blank">Google</a></li>
-						<li><a  id="tag1" href="/fish">Fish</a></li>
-						<li><a href="/chips">Chips</a></li>
-						<li><a href="/salt">Salt</a></li>
-						<li><a href="/vinegar">Vinegar</a></li>
+				    	{% if tags %}
+				    		{% for single_tag in tags %}
+				    			<li><a id="tag{{ forloop.counter }}" href=""> {{ single_tag.content }} </a></li>
+				    		{% endfor %}
+
+				    	{% else %}
+							<li><a href="http://www.google.com" target="_blank">Google</a></li>
+							<li text="Fish"><a href="/fish">Fish</a></li>
+							<li><a href="/chips">Chips</a></li>
+							<li><a href="/salt">Salt</a></li>
+							<li><a href="/vinegar">Vinegar</a></li>
+							<li><a href="http://www.google.com" target="_blank">Google</a></li>
+							<li><a  id="tag1" href="/fish">Fish</a></li>
+							<li><a href="/chips">Chips</a></li>
+							<li><a href="/salt">Salt</a></li>
+							<li><a href="/vinegar">Vinegar</a></li>
+				    	{% endif %}
 					</ul>
 				 </canvas>
 				</div>

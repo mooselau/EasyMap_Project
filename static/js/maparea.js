@@ -34,8 +34,16 @@ function settingTagCloud() {
    // your other jQuery stuff here...
 }
 
+// This is for the button besides the tag cloud in the home page.
+var previous = 1;
 $('#tag-fun-btn').click(function() {
-	$('#tagcloud-canvas').tagcanvas("tagtofront", {id: "tag1", active: true});
+  var randomTagNum = Math.floor((Math.random() * 20) + 1);
+  while(previous == randomTagNum) {
+    randomTagNum = Math.floor((Math.random() * 20) + 1);
+  };
+  previous = randomTagNum;
+  var id_str = "tag"+randomTagNum;
+	$('#tagcloud-canvas').tagcanvas("tagtofront", {id: id_str, active: true});
 	// $('#tagcloud-canvas').tagcanvas("rotatetag", {id: "tag1", lat: 30, lng: -45});
 	// .tagcanvas("setspeed", [2, -2]);
 })

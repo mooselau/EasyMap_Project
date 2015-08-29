@@ -9,7 +9,7 @@ import random
 import re
 
 # get 5 objects that randomly distribute in the set
-def get_five_radom_digits(locations_list_length, locations_list):
+def get_five_radom_digits(locations_list_length):
 
 	# # Give the total number of the objects.
 	# last = al.objects.count() - 1 in Model.objects.all() level
@@ -36,10 +36,6 @@ def get_five_radom_digits(locations_list_length, locations_list):
 	return index_list
 
 
-def error_page(request):
-
-	return render(request, 'easymap/error.html')
-
 
 # Auxiliary function for creating a new query.
 def save_query(query_type, keywords, content):
@@ -61,7 +57,7 @@ def save_query(query_type, keywords, content):
 		# When doesn't exists then create it.
 	except Query.DoesNotExist:
 			q = Query.objects.create(query_type = query_type, keywords = keywords, content = content
-				, creating_time = current_time, creating_date = current_date)
+				, creating_time = current_time, creating_date = current_date, frequency=1)
 
 	return q
 
@@ -382,6 +378,28 @@ def get_columns_name(category_name):
 	return default_columns_name
 
 
+# Get some random queries.
+def get_random_queries():
+
+	query_num = Query.objects.count()
+	indexes = get_five_radom_digits(query_num)
+	indexes += get_five_radom_digits(query_num)
+	indexes += get_five_radom_digits(query_num)
+	indexes += get_five_radom_digits(query_num)
+
+	print len(indexes)
+	# indexes = indexes + extra_indexes
+	# print indexes
+	random_queries = []
+	all_quries = Query.objects.all()
+
+	for index in indexes:
+		random_queries.append(all_quries[index])
+
+	# print random_queries
+	return random_queries
+
+
 # NOTE: put all variabales in the context_dict, then just mention the 
 # name of the variablble which already in the context_dict to use it.
 # it's very fast and neat! try it!
@@ -434,6 +452,9 @@ def index(request):
 	else :
 		context_dict['locations_list'] = None
 
+
+	random_tags_query = get_random_queries()
+	context_dict['tags'] = random_tags_query
 	# categories = Category.objects.all()
 	# context_dict['categories'] = categories	
 	# context_dict['boldmessage'] = "here is the bold message!"

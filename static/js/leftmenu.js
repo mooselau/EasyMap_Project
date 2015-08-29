@@ -21,13 +21,11 @@ function formValidating() {
 // this funciton is for manually hiding map-menu-bar.
 function hideMenuBar() {
    // var status = $('.collapse').collapse('');
-
-           if (active) {
-                // alert();
-                active = false;
-                $('.collapse').collapse('toggle');
-            };
-
+   if (active) {
+        // alert();
+        active = false;
+        $('.collapse').collapse('toggle');
+    };
     $('#map-inputs').hide("slow");
 }
 
@@ -92,7 +90,6 @@ $('#search-on-map').click(function(){
 
 // This is for displaying the newsest categories.
 $("#whats-new-btn").click(function() { 
-
         $.ajax({ 
             type: "Get",
             url: '/easymap/news/',
@@ -128,7 +125,7 @@ $("#whats-new-btn").click(function() {
 });
 
 
-
+// This if for showing the popular queries in a pie chart.
 $("#whats-hot-btn").click(function(data) {
     $.ajax({ 
         type: "Get",
@@ -157,10 +154,8 @@ $("#whats-hot-btn").click(function(data) {
     return false;   //Important return!
 });
 
-
+// This is for show all categries.
 $("#all-btn").click(function() { 
-            // data: $(this).serialize(), // get the form data
-
         $.ajax({ 
             type: "Get",
             url: '/easymap/categorys/',

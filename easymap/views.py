@@ -282,19 +282,42 @@ def show_popular(request):
 def show_news(request):
 
 	# minus mark means descending order
-	the_newest_categorys = Category.objects.order_by('-creating_date')[:2]
+	the_newest_categorys = Category.objects.order_by('-creating_date')[:5]
 
-	categorys_str = ""
+	# categorys_str = ""
+
+	# for single_category in the_newest_categorys:
+	# 	# print single_category
+	# 	categorys_str += "<h3>"+str(single_category.id_name)+" -- "+str(single_category.id)+"<br/>"+str(single_category.creating_date)+"</h3>"
+
+	categorys_str = "<div id='news-div'><ul class='list-group news-list'>"
+
+	categorys_str += "<li class='list-group-item new-list-top'><span class='badge news-top'>Date</span>New Created Name</li>"
 
 	for single_category in the_newest_categorys:
-		# print single_category
-		categorys_str += "<h3>"+str(single_category.id_name)+" -- "+str(single_category.id)+"<br/>"+str(single_category.creating_date)+"</h3>"
+		categorys_str += "<li class='list-group-item news-list-li'>"+"<span class='badge news-span'>"+ str(single_category.creating_date) +"</span>"+ str(single_category.id_name) +"</li>"
+
+
+	categorys_str += "</ul></div>"
+# 
+#   
+#     
+#     Cras justo odio
+#   </li>
+#   <li class="list-group-item">
+#     <span class="badge">2</span>
+#     Dapibus ac facilisis in
+#   </li>
+#   <li class="list-group-item">
+#     <span class="badge">1</span>
+#     Morbi leo risus
+#   </li>
+
 
 	# categorys = []
 
 	# for single_category in the_newest_categorys:
 	# 	categorys.append({'name':str(single_category.id_name),'':})
-
 
 	return HttpResponse(categorys_str)
 

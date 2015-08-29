@@ -1,7 +1,28 @@
+/*This CSS file is support some extra tools on the page, including the table on the table page, the
+* charts on the home page, and the tagcloud.
+*/
 
+#tagsCanvasContainer {
+    position: relative;
+    top: 10%;
+    text-align: center;
+    background-color: pink;
+}
 
+/* Don't change the size in CSS for this canvas! Important!*/
+#tagcloud-canvas {
+    border-radius: 20px;
+    background-color: #8C7C6C;
+}
 
+#tag-fun-btn {
+    position: relative;
+    top: 300px;
+    left: 16%;
+    float: left;
+}
 
+/*This is for charts.*/
 #chart-container {
     position: relative;
     width: 100%; 
@@ -12,6 +33,27 @@
     /*background-color: #FFFFE0;*/
 }
 
+#news-div {
+    /*text-align: center;*/
+    position: relative;
+    top: 20%;
+    background-color: white;
+}
+.news-list {
+    margin: 0px auto;
+    width: 50%;
+    /*background-color: white;*/
+}
+.new-list-top {
+    color: white;
+    background-color: brown;
+}
+.news-list-li {
+    background-color: pink;
+}
+.news-span {
+    background-color: brown;
+}
 
 /* Below are for the categorys in home page inside #alter div. */
 /*.cat-divs {

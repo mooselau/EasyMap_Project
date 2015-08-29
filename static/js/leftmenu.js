@@ -7,6 +7,7 @@ function formValidating() {
     // Get the input value.
     var inputValue = $('#search-input').val();
     if (inputValue.trim().length == 0) {
+        Messi.alert("Sorry, it seems you haven't type anything..");
         $('#search-input').val("");
         // alert("false");
         return false;
@@ -15,6 +16,19 @@ function formValidating() {
         // alert("true");
         return true;
     }
+}
+
+// this funciton is for manually hiding map-menu-bar.
+function hideMenuBar() {
+   // var status = $('.collapse').collapse('');
+
+           if (active) {
+                // alert();
+                active = false;
+                $('.collapse').collapse('toggle');
+            };
+
+    $('#map-inputs').hide("slow");
 }
 
 
@@ -28,20 +42,12 @@ $( document ).ready(function() {
 	    var $collapse = $this.closest('.collapse-group').find('.collapse');
 
         $collapse.collapse('toggle');
+        // If "active" is true, after the collapse buttons change, it changes as well.
         active = (active==true)?false:true;
-        // if(active) {
-        //     active = true;
-        //     // $collapse.collapse('show');
-        // }
-
-        // else {
-        //     active = false;
-        //     // $collapse.collapse('hide');
-        // }
     });
 });
 
-// This is for table page.
+// This is for displaying table on table page.
 $(document).ready(function() {
     $('#category-table').dataTable( {
         "pagingType": "full_numbers"
@@ -71,7 +77,9 @@ $('#search-on-map').click(function(){
             values = values.substring(0, values.length-1);
             var cat_name = $("#cat-table-title").attr("cat-name");
             var data = '{"name":'+cat_name+'%numbers":'+values+'}';
-            window.open('/easymap/home' + '?data=' + data);
+            // window.open('/easymap/home' + '?data=' + data);
+            // window.open('/easymap/home' + '?data=' + data);
+            location.replace('/easymap/home' + '?data=' + data);
         }
     }
     else {
@@ -82,40 +90,6 @@ $('#search-on-map').click(function(){
     // var data = [['name',cat_name],['numbers',values]];
 })
 
-    // $("#numbers-box").data("numbers",values);
-
-    // $.ajax({
-    //     type: 'GET',
-    //     // data: { data: "G12 9BH" }, // if necesarry
-    //     // data: data,
-    //     url: '/easymap/querylist',
-    //     // beforeSend: function() {
-    //     //     $('#loading').show();
-    //     // },
-    //     success: function(data) {
-    //         // alert();
-    //         // ...redirect...
-    //     },
-    //     cache: false
-    // });
-
-// this funciton is for manually hiding map-menu-bar.
-function hideMenuBar() {
-   // var status = $('.collapse').collapse('');
-
-           if (active) {
-                // alert();
-                active = false;
-                $('.collapse').collapse('toggle');
-            };
-
-    $('#map-inputs').hide("slow");
-   // alert($('.collapse').is('active'));
-    // Hide the inputs button with inputs fields.
-   // setTimeout( function() {
-   // },100);
-}
-
 // This is for displaying the newsest categories.
 $("#whats-new-btn").click(function() { 
 
@@ -123,32 +97,31 @@ $("#whats-new-btn").click(function() {
             type: "Get",
             url: '/easymap/news/',
             success: function(data) { 
+                // To judge if div of map exists on page.
+                if( $('#map-canvas').length == 0 ) {
 
+                    $("#alter").html(data);
+                    $('.news-list-li').hide();
 
-            // To judge if div of map exists on page.
-            if( $('#map-canvas').length == 0 ) {
-            
+                    $('.news-list .news-list-li:hidden:first').fadeIn( function showNext() {
+                        $( this ).next( ".news-list-li" ).fadeIn( showNext );
+                    });
+                }
+                else {
 
-            }
-            else {
+                 $('#map-canvas').fadeOut('fast', function() {
+                    document.getElementById("map-canvas").setAttribute("id", "alter");
+                    $("#alter").css("background-color", "#A37547");
+                    $("#alter").fadeIn('fast').html(data);
+                    $('.news-list-li').hide();
 
-
-            }
-
-
-                // on success..
-                // $("#alter").html(data); // update the DIV
-                // window.reload();
-                // $('#map-canvas').load(document.URL + ' #alter');
-                // location.replace("/easymap/");
-
-                //  $('#map-canvas').fadeOut('fast', function() {
-                //     document.getElementById("map-canvas").setAttribute("id", "alter");
-                //     $("#alter").css("background-color", "lightgreen");
-                //     $("#alter").fadeIn('fast').html(data);
-                //  });
-                // $("#alter").fadeIn('fast').html(data);
-                // initialiseChart(data);
+                    $('.news-list .news-list-li:hidden:first').delay(50).fadeIn( function showNext() {
+                        $( this ).next( ".news-list-li" ).delay(50).fadeIn( showNext );
+                    });
+                 
+                    hideMenuBar();
+                 });
+                }
             }
         });
         return false;
@@ -157,25 +130,20 @@ $("#whats-new-btn").click(function() {
 
 
 $("#whats-hot-btn").click(function(data) {
-    
     $.ajax({ 
         type: "Get",
         url: '/easymap/popular/',
         success: function(data) {
-
             // To judge if div of map exists on page.
             if( $('#map-canvas').length == 0 ) {
-
                 $("#alter").html('<div id="chart-container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>');
                 initialiseChart(data);
-
             }
 
             else {
-
              $('#map-canvas').fadeOut('fast', function() {
                 document.getElementById("map-canvas").setAttribute("id", "alter");
-                $("#alter").css("background-color", "lightgreen");
+                $("#alter").css("background-color", "#A37547");
 
                 // This is used to create a div inside div "alter" and so make the charts in the newly created div.
                 $("#alter").fadeIn('fast').html('<div id="chart-container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>');
@@ -183,13 +151,11 @@ $("#whats-hot-btn").click(function(data) {
              
                 hideMenuBar();
              });
-
             }
-
         }
-        });
-    return false;
     });
+    return false;   //Important return!
+});
 
 
 $("#all-btn").click(function() { 
@@ -217,7 +183,7 @@ $("#all-btn").click(function() {
                     // using jQuery to show them.
                     $('#map-canvas').fadeOut('fast', function() {
                         document.getElementById("map-canvas").setAttribute("id", "alter");
-                        $("#alter").css("background-color", "lightgreen");
+                        $("#alter").css("background-color", "#A37547");
                         $("#alter").fadeIn('fast').html(data);
 
                         $( ".cat-btns" ).first().show( "fast", function showNext() {
@@ -229,18 +195,12 @@ $("#all-btn").click(function() {
 
             }
         });
-    return false;
-                //  $('#map-inputs').hide("slow");
-
-                // $( ".cat-divs" ).first().show( "fast", function showNext() {
-                //     $( this ).next( ".cat-divs" ).show( "fast", showNext );
-                // });                
-                // $("#alter").html(data);
-
+    return false;   //Important return!
 });
 
 
 
+// Below are abandoned.
 
 // This function is adapted from http://www.datatables.net/index;
 // and http://stackoverflow.com/questions/9607428/loop-through-datatables-table-to-get-all-cells-content

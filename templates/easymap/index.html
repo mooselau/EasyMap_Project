@@ -6,28 +6,25 @@
 	{% block head_block %}
     <script src="{% static "js/jquery-1.11.3.min.js" %}"></script>
 	<script type="text/javascript">
+	
+	// This is for detecing if any data needed the map. If yes, then initialize the map, and 
+	// then processing the data to display on map.
+	function detectData() {
+		data = document.getElementById("geometry").getAttribute("data-info");
+// !!! NEEDS VERIFYING !!!!
+		if (data != "None"){
+			initialize();
+			splitDataString();
+		}
+	}
 
 	// This is used to check if there is any location response.
 	window.onload = function() {
-		data = document.getElementById("geometry").getAttribute("data-info");
-			if (data != "None"){
-				initialize();
-				splitDataString();
-			}
-// // !!! NEEDS VERIFYING !!!!
-			// alert();
-			// if ({{ locations_list }} != "None"){
-				// alert("entering GMap..");
-			else {
-			// 	// alert("No GMap!");
-			}
+		detectData();
 
-		try {
-      		TagCanvas.Start('myCanvas');
-	    } catch(e) {
-	      // something went wrong, hide the canvas container
-	      document.getElementById('myCanvasContainer').style.display = 'none';
-	    }
+		// Below are the setting for tag cloud, they are in maparea.js.
+		prepareTagCloud();
+		settingTagCloud();
 	}
 	
 // 	$(document).ready(function () {
@@ -37,21 +34,10 @@
 // 				splitDataString();
 // 			}
 // 	})
-
 	 // This is for the tags cloud in the home page.
-	 $(document).ready(function() {
-	   if( ! $('#myCanvas').tagcanvas({
-	     textColour : '#ffffff',
-	     outlineThickness : 1,
-	     maxSpeed : 0.03,
-	     depth : 0.75
-	   })) {
-	     // TagCanvas failed to load
-	     $('#myCanvasContainer').hide();
-	   }
-	   // your other jQuery stuff here...
-	 });
+	 // $(document).ready(function() {
 
+	 // });
 	</script>
 
 	{% endblock %}
@@ -64,14 +50,7 @@
 			<li><a>Share</a></li>
 			<li><a>About</a></li>
 		</ul> 
-			<!-- <li></li> -->
-<!-- 	{% if categories %}
-		{% for category in categories %}
-        <li><a href="/easymap/category/{{ category.id_name }}" target="_blank">{{ category.id_name }}</a></li>
-    	{% endfor %}
-    {% else %}
-		<li><a href="#">{{ boldmessage }}</a></li>
-	{% endif %}  -->
+
 	<!-- This DIV is set for temporarily storing data passed from Database -->
     	<div id="geometry" data-info="{{ locations_list }}"></div>
 	{% endblock %}
@@ -89,7 +68,7 @@
 				</form>
 				</div>
 			</li>
-			<li><a id="all-btn" class="btn btn-info menu-btn">Location Category</a></li>
+			<li><a id="all-btn" class="btn btn-info menu-btn-cat">Location Category</a></li>
 			<div class="whats-btn">
 				<li><a id="whats-new-btn" class="btn btn-info menu-btn-whats" href="/easymap/news/">What's New!</a></li>
 				<li><a id="whats-hot-btn" class="btn btn-info menu-btn-whats" href="/easymap/popular/">What's Hot!</a></li>
@@ -118,7 +97,6 @@
 
 				<!-- </div> -->
 
-
 <!-- 				  <a aria-expanded="false" href="#" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
 				  <ul class="dropdown-menu">
 				    <li><a href="#">Action</a></li>
@@ -142,7 +120,6 @@
 			</div>
 		</div>
 		
-
 <!-- 			
 	        	<ul class="collapse"> -->
 	        		<!-- onclick="javascript:Query('{{ category.id_name }}')" -->
@@ -170,13 +147,19 @@
 			<div id="map-canvas">
 		{% else %}
 			<div id="alter">
-				<div id="myCanvasContainer">
+				<div id="tagsCanvasContainer">
+				<a id="tag-fun-btn" class="btn btn-success">Need Inspiration?</a>
 					<!-- Do not change the size in CSS.. IDK.. -->
-				 <canvas width="300" height="300" id="myCanvas">
+				 <canvas id="tagcloud-canvas" width="500" height="400">
 				  <p>Anything in here will be replaced on browsers that support the canvas element</p>
 				    <ul>
 						<li><a href="http://www.google.com" target="_blank">Google</a></li>
-						<li><a href="/fish">Fish</a></li>
+						<li text="Fish"><a href="/fish">Fish</a></li>
+						<li><a href="/chips">Chips</a></li>
+						<li><a href="/salt">Salt</a></li>
+						<li><a href="/vinegar">Vinegar</a></li>
+						<li><a href="http://www.google.com" target="_blank">Google</a></li>
+						<li><a  id="tag1" href="/fish">Fish</a></li>
 						<li><a href="/chips">Chips</a></li>
 						<li><a href="/salt">Salt</a></li>
 						<li><a href="/vinegar">Vinegar</a></li>
@@ -191,6 +174,7 @@
 	{% block footer_block%}
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTofEnEhM2-22QnSfDx0e3cfejTxokRHo&v=3.exp"></script> 
 	<script src="{% static "js/googlemaps.js" %}"></script>
+	<script src="{% static "js/maparea.js" %}"></script>
 
 	<script src="http://code.highcharts.com/highcharts.js"></script>
 	<!-- // <script src="http://code.highcharts.com/modules/exporting.js"></script> -->

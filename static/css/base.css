@@ -1,5 +1,9 @@
-/* This CSS file is used to support displaying the index page for EasyMap. Parts of it 
-adapted from Internet all with comments above, and others were written by myself.*/
+/* This CSS file is used to support displaying the index page for EasyMap.
+* Including the styling for buttons and pics on the top navibar, the buttons and effects on the left menu bar, and
+* the containers on the map area and the codes in the rest half of the file are from booswatch.com.
+* Parts of it adapted from Internet all with comments above, and others were written by myself.
+* 
+*/
 
 html, body {
   height: 100%;
@@ -45,21 +49,24 @@ html, body {
   /*background-color: #339966;*/
 }
 
+/*This is for showing the map.*/
 #map-canvas {
   height: 90%;
   width: 80%;
   position: absolute;
   right: 0px;
-  background-color: lightgreen;
+  background-color: #A37547;
 }
 
-/*The alternative when not showing map-cancas on home page.*/
+/* The alternative container displays when not showing map-cancas on home page.
+* left-menu is for styling the menu bar on the left hand side.
+*/
 #alter {
   height: 90%;
   width: 80%;
   position: absolute;
   right: 0px;
-  background-color: lightgreen;
+  background-color: #A37547;
 }
 
 .left-menu {
@@ -68,10 +75,6 @@ html, body {
   background-color: lightyellow;
   float: left;
 }
-.whats-btn {
-  width: 100%;
-  /*background-color: red;*/
-}
 
 /* Below are for the left menu buttons in the left menu bar. */
 .menu-ul {
@@ -79,9 +82,8 @@ html, body {
   padding: 2px;
 }
 
-.menu-btn {
+.menu-btn-cat {
   margin-top: 8px;
-  /*margin-bottom: 10px;*/
   width: 100%;
 }
 
@@ -89,26 +91,28 @@ html, body {
   width: 45%;
   margin: 5px;
   margin-top: 10px;
-  /*padding: 0px;*/
   margin-left: 1px;
   margin-right: 20px;
 }
+
 #whats-new-btn {
   float: left;
 }
+
 #whats-hot-btn {
   position: relative;
   margin-right: 1px;
 }
 
-/* Below is for Map collapase Buttons. */
+/* Below are for Map collapse Buttons. 
+* they are hidden at the beginning.
+*/
 #map-pic {
   width: 28px;
   height: 28px;
 
   margin: 0px;
   padding: 0px;
-  /*background-color: red;*/
 }
 
 .show-map-div {
@@ -132,16 +136,13 @@ html, body {
 }
 
 .map-li {
-  /*position: relative;*/
-  /*left: 10%;*/
   margin: 0px auto;
   width: 85%;
   margin-bottom: 10px;
-  /*padding-bottom: 3px;*/
   /*background-color: yellow;*/
 }
 
-/* These CSSes are for googlemaps.js */
+/* These CSSes are for inforwindows on the google maps. */
 .info-window-body {
   margin-top: 0px;
   margin-bottom: 0px;
@@ -159,30 +160,24 @@ html, body {
   width: 350px !important;
   top: 0 !important;
   left: 0 !important;
-  border-radius: 2px 2px 0 0;*/
+  border-radius: 2px 2px 0 0;
+*/
 }
 .info-window-heading {
+   width: 100%;
+   padding: 5px;
+   background-color: #48b5e9;
+   color: white;
 /*   font-family: 'Open Sans Condensed', sans-serif;
    font-size: 22px;
    font-weight: 400;*/
-   width: 100%;
    /*display: inline-table;*/
-   padding: 5px;
    /*padding: 0px;*/
-   background-color: #48b5e9;
-   color: white;
    /*margin: 1px;*/
    /*margin: 0px auto;*/
    /*border-radius: 2px 2px 0 0;  */
    /*In accordance with the rounding of the default infowindow corners. */
 }
-
-/*.input-box {
-  position: relative;
-  top: 12%;
-
-  background-color: red;
-}*/
 
 /* Below are for setting image & etc.*/
 .setting-div {
@@ -216,7 +211,6 @@ html, body {
 * It was adapted from TheCodeBlock: 
 * http://thecodeblock.com/realistic-soft-search-box-in-pure-css/
 */
-
 .searchbox{
     /*background-color: #fffbf8;*/
     background-color: lightblue;

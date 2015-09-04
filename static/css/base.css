@@ -66,7 +66,7 @@ html, body {
   width: 80%;
   position: absolute;
   right: 0px;
-  background-color: #A37547;
+  background-color: #FFFFFF;
 }
 
 .left-menu {
@@ -197,14 +197,15 @@ html, body {
 
 #footer-info {
   position: relative;
-  top: 95%;
-  left: 45%;
-  margin: 0px;
+  top: 94.5%;
+  left: 12%;
   padding: 0px;
   width: 700px;
   font-size: 14px;
-  text-align: right;
-  /*background-color: red;*/
+  color: #CCCCCC;
+  /*margin: 0px auto;*/
+  /*text-align: right;*/
+  /*background-color: whitesmoke;*/
 }
 
 /* Below is for search box in the home page. 

@@ -2,24 +2,42 @@
 * charts on the home page, and the tagcloud.
 */
 
+#static-pic {
+    height: 100%;
+    width: 100%;
+}
+.static-image {
+
+    height: 100%;
+    width: 40%;
+    background-color: lightblue;
+    float: left;
+    /*z-index: -1;*/
+}
+.dynamic-content {
+    background-color: green;
+}
+
 #tagsCanvasContainer {
-    position: relative;
-    top: 10%;
+    /*position: relative;*/
+    /*top: 10%;*/
     text-align: center;
-    background-color: pink;
+    /*background-color: pink;*/
 }
 
 /* Don't change the size in CSS for this canvas! Important!*/
 #tagcloud-canvas {
+    margin-top: 0.6%;
     border-radius: 20px;
-    background-color: #8C7C6C;
+    background-color: white;
 }
 
 #tag-fun-btn {
-    position: relative;
-    top: 300px;
-    left: 16%;
-    float: left;
+    /*position: relative;*/
+    /*top: 300px;*/
+    /*left: 18%;*/
+    /*float: left;*/
+    width: 59%;
 }
 
 /*This is for charts.*/
@@ -35,13 +53,13 @@
 
 #news-div {
     /*text-align: center;*/
-    position: relative;
-    top: 20%;
-    background-color: white;
+    /*position: relative;*/
+    /*top: 10%;*/
+    /*background-color: white;*/
 }
 .news-list {
     margin: 0px auto;
-    width: 50%;
+    width: 100%;
     /*background-color: white;*/
 }
 .new-list-top {
@@ -51,9 +69,14 @@
 .news-list-li {
     background-color: pink;
 }
+.news-list-a {
+    color: black; 
+}
 .news-span {
     background-color: brown;
 }
+
+
 
 /* Below are for the categorys in home page inside #alter div. */
 /*.cat-divs {
@@ -61,10 +84,29 @@
     text-align: center;
     background-color: red;
   }*/
+#cat-title {
+    /*margin-top: 20px;*/
+    position: relative;
+    top: 2%;
+    font-size: 40px;
+
+}
 
 .cat-btns {
-    margin: 3px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 45%;
+    height: 40%;
+
+    font-size: 40px;
+    /*font-style: italic;*/
+    text-align: center;
     display: none;
+    padding-top: 7%;
+    /*line-height: 100%;*/
+    /*vertical-align: text-middle;*/
 
     /*background-color: red;*/
 }
@@ -74,24 +116,15 @@
     /*width: 300px;*/
 
     position: relative;
-    width: 50%; 
-    height: 50%; 
-    top: 15%; 
+    width: 100%; 
+    height: 100%; 
+    /*top: 15%; */
     margin: 0 auto; 
     border: 3px solid grey;
 
     text-align: center;
     background-color: #FFFFE0;
 }
-
-/*#cat-title:after {*/
-    /*content: '';*/
-    /*display: block;*/
-    /*border: 2px solid grey;*/
-    /*width: 500px;*/
-    /*margin: 0px auto;*/
-/*}*/
-
 
 /* below are for the table page. */
 .up-table-container {
@@ -101,6 +134,12 @@
     position: relative;
     left: 50.6%;
     top: -38px;
+}
+#back-btn {
+    position: relative;
+    left: -49%;
+    top: -38px;
+    /*top: -70px;*/
 }
 
 .headline {

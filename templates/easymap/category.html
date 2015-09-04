@@ -7,10 +7,6 @@
 <body>
 
 	{% block map_block %}
-	<script type="text/javascript">
-	// $('.main-container').css('background-color','lightblue');
-	// $(".main-container").fadeIn('fast');
-	</script>
 	
 	<!-- This is for virtual table -->
 	{% if is_virtual_table %}
@@ -19,6 +15,7 @@
 			
 			<h2 id="cat-table-title" class="headline" cat-name="{{ table_name }}"> {{ table_name|upper }} </h2>
 			<a id="search-on-map" class="btn btn-primary table-btn table-search-btn">Show on Map!</a>
+			<a id="back-btn" class="btn btn-primary" onClick="history.go(-1);">Go Back</a>
 			</div>
 
 			<table id="category-table" class="display table-category">
@@ -54,6 +51,7 @@
 			
 			<h2 id="cat-table-title" class="headline" cat-name="{{ category_name }}"> {{ table_name|upper }} </h2>
 			<a id="search-on-map" class="btn btn-primary table-btn table-search-btn">Show on Map!</a>
+			<a id="back-btn" class="btn btn-primary" onClick="history.go(-1);">Go Back</a>
 			</div>
 
 			<table id="category-table" class="display table-category">
@@ -80,7 +78,6 @@
 			    </tr>
 			{% endfor %}
 
-	<!-- For none information. -->
 	{% else %}
 		<!-- Should add ERROR page here !! -->
 				<strong>Here is nothing!!</strong>
@@ -88,7 +85,6 @@
 			  </tbody>
 			</table> 
 		</div>
-	<!-- </div> -->
 	{% endblock %}
 
 </body>

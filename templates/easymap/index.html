@@ -1,5 +1,6 @@
 {% extends 'easymap/base.html' %}
 {% load staticfiles %} 
+{% load easymap_extras %}
 
 <html>
 <head>
@@ -11,45 +12,27 @@
 	// then processing the data to display on map.
 	function detectData() {
 		data = document.getElementById("geometry").getAttribute("data-info");
-// !!! NEEDS VERIFYING !!!!
 		if (data != "None"){
 			initialize();
 			splitDataString();
 		}
-	}
+	};
 
 	// This is used to check if there is any location response.
 	window.onload = function() {
 		detectData();
-
+// !!NEED ATTENTION.
 		// Below are the setting for tag cloud, they are in maparea.js.
 		prepareTagCloud();
 		settingTagCloud();
-	}
-	
-// 	$(document).ready(function () {
-// 			// if (data !== null && data !== None)
-// 				// new Messi('You Have locations to show!', {title: 'Title', titleClass: 'success', buttons: [{id: 0, label: 'GO!', val: 'X'}]});
-// 				// alert(data);
-// 				splitDataString();
-// 			}
-// 	})
-	 // This is for the tags cloud in the home page.
-	 // $(document).ready(function() {
-
-	 // });
+	};
 	</script>
-
 	{% endblock %}
 
 </head>
-	
 <body>
+	
 	{% block nav_block %}
-		<ul class="nav navbar-nav navbar-right">
-			<li><a>Share</a></li>
-			<li><a>About</a></li>
-		</ul> 
 
 	<!-- This DIV is set for temporarily storing data passed from Database -->
     	<div id="geometry" data-info="{{ locations_list }}"></div>
@@ -62,120 +45,71 @@
 			<li><div id="search-box-container">
 				<div id="gradient"></div>
 				<form class="searchbox" action="/easymap/querysearch" method="POST" onsubmit="return formValidating()"> {% csrf_token %}
-					<!-- var bla = $('#txt_name').val(); -->
 				        <input id="search-input" type="search" name="search-content" placeholder="Search Here.."/>
 				        <button id="searh-submit-btn" class="main-search-btn" type="submit" value="search">&nbsp;</button>
 				</form>
 				</div>
 			</li>
-			<li><a id="all-btn" class="btn btn-info menu-btn-cat">Location Category</a></li>
+			<li><a id="all-btn" class="btn btn-info menu-btn-cat" title="See Categories">Location Category</a></li>
 			<div class="whats-btn">
-				<li><a id="whats-new-btn" class="btn btn-info menu-btn-whats" href="/easymap/news/">What's New!</a></li>
-				<li><a id="whats-hot-btn" class="btn btn-info menu-btn-whats" href="/easymap/popular/">What's Hot!</a></li>
+				<li><a id="whats-new-btn" class="btn btn-info menu-btn-whats" href="/easymap/news/" title="See New Categories">What's New!</a></li>
+				<li><a id="whats-hot-btn" class="btn btn-info menu-btn-whats" href="/easymap/popular/" title="See Popular Queries">What's Hot!</a></li>
 			</div>
 			</ul>
 
 			<div class="extra-tool">
-				<!-- <div class="btn-group"> -->
 				 <div class="show-map-div">
-				 	<a id="show-map" class="btn btn-success">Show Map</a>
-				 	<a id="map-inputs" href="#" class="btn btn-success"><img id="map-pic" src="{% static "images/map.png" %}" alt="Picture of Map" /></a>
+				 	<a id="show-map" class="btn btn-success" title="find out on Map">Show Map</a>
+				 	<a id="map-inputs" href="#" class="btn btn-success" title="Searching Locations"><img id="map-pic" src="{% static "images/map.png" %}" alt="Picture of Map" /></a>
 				</div>
-				<!-- <form class="map-search-box" method="post"> {% csrf_token %} -->
+				<form class="map-search-box" action="javascript:findLocation('startLocation: '+$('#location-input').val()+'; '+'destination: '+$('#destination-input').val());">
 				  <ul class="map-collapse-bar collapse-group">
 				  	<li class="map-li collapse"><label class="control-label" for="inputSmall">Find Location</label>
-				  	<!-- <li class="map-li"></li> id="inputSmall"-->
-				  	<input class="form-control input-sm map-inputs" id="location-input" type="text" value=""></li>
-				  	<li class="map-li collapse"><label class="control-label" for="inputSmall">Find Route</label>
-				  	<!-- <li class="map-li"></li> -->
-				  	<input class="form-control input-sm map-inputs" id="route-input" type="text" value=""></li>
+				  	<input class="form-control input-sm map-inputs" id="location-input" type="text" value="" placeholder="Start location.."></li>
+				  	<li class="map-li collapse"><label class="control-label" for="inputSmall">Find a Route</label>
+				  	<input class="form-control input-sm map-inputs" id="destination-input" type="text" value="" placeholder="Destination?.."></li>
 				  	<li class="map-li collapse"><button id="map-submit" type="submit" value="Submit">Go</button>
-				  		<button id="" type="reset" value="Reset">Reset</button></li>
+				  	<button type="reset" value="Reset">Reset</button>
+				  	<button id="get-location-btn" type="button" title="Use Current Location">Get me location</button></li>
 				  </ul>
-				<!-- </form> -->
-				<!-- <div class="form-group"> -->
-
-				<!-- </div> -->
-
-<!-- 				  <a aria-expanded="false" href="#" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
-				  <ul class="dropdown-menu">
-				    <li><a href="#">Action</a></li>
-				    <li><a href="#">Another action</a></li>
-				    <li><a href="#">Something else here</a></li>
-				    <li class="divider"></li>
-				    <li><a href="#">Separated link</a></li>
-				  </ul> -->
-				<!-- </div> -->
-<!-- 				<div class="form-group input-box">
-				  <label class="control-label" for="inputSmall">Where is here</label>
-				  <input class="form-control input-sm" id="inputSmall" type="text" placeholder="Type Here.." value="">
-				  <button type="submit" id="show-map" class="btn btn-sm search-btn btn-primary" href="/easymap/home">GO!</button>
-				</div> -->
-					 <!-- onclick="alert('HEHE #: '+$('#geometry').data('info'));" -->
+				</form>
 			</div>
 			
-				<!-- <a class="btn btn-info" href="/easymap/home">Show Map</a> -->
 			<div class="setting-div">
-			<a id="setting-btn" class="btn btn-warning"><img id="setting-pic" src="{% static "images/settings.png" %}" alt="Picture of Setting" /></a>
+			<a id="setting-btn" class="btn btn-warning" title="Setting"><img id="setting-pic" src="{% static "images/settings.png" %}" alt="Picture of Setting" /></a>
 			</div>
 		</div>
-		
-<!-- 			
-	        	<ul class="collapse"> -->
-	        		<!-- onclick="javascript:Query('{{ category.id_name }}')" -->
-<!-- 		        {% if categories %}
-					{% for category in categories %}
-		        		<li><a class="btn btn-success">{{ category.id_name }}</a></li>
-		    		{% endfor %}
-		    	{% else %}
-						<li class="menu-li" class='last'><a href="#">{{ boldmessage }}</a></li>
-				{% endif %}
-	       		</ul>
-	       	</li> -->
 	       
-<!-- 		   <li class='has-sub'><a href='#'><span>About</span></a>
-		      <ul>
-		         <li><a href='#'><span>Company</span></a></li>
-		         <li class='last'><a href='#'><span>Contact</span></a></li>
-		      </ul>
-		   </li>
-		   <li class='last'><a href='#'><span>Contact</span></a></li>
-			</ul> -->
-
 		<!-- if there is queries then show the map, otherwise no. -->
 		{% if locations_list != None %}
 			<div id="map-canvas">
 		{% else %}
 			<div id="alter">
+				
+				<div class="static-image"><img id="static-pic" src="{% static "images/static-img.png" %}" alt="Picture of IMG" /></div>
 				<div id="tagsCanvasContainer">
-				<a id="tag-fun-btn" class="btn btn-success">Need Inspiration?</a>
 					<!-- Do not change the size in CSS.. IDK.. -->
-				 <canvas id="tagcloud-canvas" width="500" height="400">
+				 <canvas id="tagcloud-canvas" width="600" height="443">
 				  <p>Anything in here will be replaced on browsers that support the canvas element</p>
 				    <ul>
 				    	{% if tags %}
 				    		{% for single_tag in tags %}
-				    			<li><a id="tag{{ forloop.counter }}" href=""> {{ single_tag.content }} </a></li>
+				    			<li><a id="tag{{ forloop.counter }}" class="cloud-tags" data="{{ single_tag.content }}" href="/easymap/querysearch?search-content={{ single_tag.content }}"> {{ single_tag.content }} </a></li>
 				    		{% endfor %}
 
 				    	{% else %}
 							<li><a href="http://www.google.com" target="_blank">Google</a></li>
-							<li text="Fish"><a href="/fish">Fish</a></li>
-							<li><a href="/chips">Chips</a></li>
-							<li><a href="/salt">Salt</a></li>
-							<li><a href="/vinegar">Vinegar</a></li>
-							<li><a href="http://www.google.com" target="_blank">Google</a></li>
-							<li><a  id="tag1" href="/fish">Fish</a></li>
-							<li><a href="/chips">Chips</a></li>
-							<li><a href="/salt">Salt</a></li>
-							<li><a href="/vinegar">Vinegar</a></li>
+							<li><a>Fish</a></li>
+							<li><a>Chips</a></li>
+							<li><a>Salt</a></li>
 				    	{% endif %}
 					</ul>
 				 </canvas>
+				<a id="tag-fun-btn" class="btn btn-success" title="Try your luck!">Try A Fun!</a>
 				</div>
 		{% endif %}
 		</div>		
-
+		<small id="footer-info">------------------------- © Copyright 2015, Moose Liu -------------------------</small>
 	{% endblock %}
 
 	{% block footer_block%}

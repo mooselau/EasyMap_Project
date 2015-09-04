@@ -18,11 +18,13 @@ function settingTagCloud() {
      // shadow : '#ADFF85',
      // shadowBlur : 1,
      // outlineThickness : 1,
+     fadeIn : 900,
      initial : [0.8,-0.3],
      minSpeed : 0.01,
      maxSpeed : 0.03,
 
      outlineMethod : 'colour',
+     outlineColour : '#000099',
      // depth : 0.75,
      // wheelZoom : false,
      // zoom : 1
@@ -47,3 +49,6 @@ $('#tag-fun-btn').click(function() {
 	// $('#tagcloud-canvas').tagcanvas("rotatetag", {id: "tag1", lat: 30, lng: -45});
 	// .tagcanvas("setspeed", [2, -2]);
 })
+
+
+

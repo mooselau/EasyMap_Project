@@ -2,18 +2,31 @@
 *
 */
 
-// This is used for validating the form before it sends the request.
+// This is used for validating the searching form before it sends the request.
 function formValidating() {
     // Get the input value.
     var inputValue = $('#search-input').val();
+
+    // Below is a RegEx for filtering harmful inputs.
+    // In this stage, give error when input has special chars except '-', 
+    // but okay with 0-9, a-z, A-Z
+    var regex = /^[a-zA-Z0-9-]+$/g;
+    var matchResult = regex.test(inputValue);
+    // alert(matchResult);
     if (inputValue.trim().length == 0) {
         Messi.alert("Sorry, it seems you haven't type anything..");
         $('#search-input').val("");
         // alert("false");
         return false;
     }
-    else {
+    else if (matchResult == false) {
+        Messi.alert("Sorry, it seems you input some special characters..");
+        $('#search-input').val("");
+        // alert("false");
+        return false;
         // alert("true");
+    }
+    else {
         return true;
     }
 }
@@ -97,6 +110,7 @@ $("#whats-new-btn").click(function() {
                 // To judge if div of map exists on page.
                 if( $('#map-canvas').length == 0 ) {
 
+                    // $("#alter").css("background-color", "");
                     $("#alter").html(data);
                     $('.news-list-li').hide();
 
@@ -108,7 +122,7 @@ $("#whats-new-btn").click(function() {
 
                  $('#map-canvas').fadeOut('fast', function() {
                     document.getElementById("map-canvas").setAttribute("id", "alter");
-                    $("#alter").css("background-color", "#A37547");
+                    // $("#alter").css("background-color", "");
                     $("#alter").fadeIn('fast').html(data);
                     $('.news-list-li').hide();
 
@@ -140,7 +154,7 @@ $("#whats-hot-btn").click(function(data) {
             else {
              $('#map-canvas').fadeOut('fast', function() {
                 document.getElementById("map-canvas").setAttribute("id", "alter");
-                $("#alter").css("background-color", "#A37547");
+                $("#alter").css("background-color", "white");
 
                 // This is used to create a div inside div "alter" and so make the charts in the newly created div.
                 $("#alter").fadeIn('fast').html('<div id="chart-container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>');
@@ -178,7 +192,7 @@ $("#all-btn").click(function() {
                     // using jQuery to show them.
                     $('#map-canvas').fadeOut('fast', function() {
                         document.getElementById("map-canvas").setAttribute("id", "alter");
-                        $("#alter").css("background-color", "#A37547");
+                        $("#alter").css("background-color", "white");
                         $("#alter").fadeIn('fast').html(data);
 
                         $( ".cat-btns" ).first().show( "fast", function showNext() {
@@ -194,56 +208,6 @@ $("#all-btn").click(function() {
 });
 
 
-
-// Below are abandoned.
-
-// This function is adapted from http://www.datatables.net/index;
-// and http://stackoverflow.com/questions/9607428/loop-through-datatables-table-to-get-all-cells-content
-// which is mainly used to cope with data processing in table in HTML.
-$("#").click(function() {
-
-        $.get( "/easymap/", function( data ) {
-          $( "#search" ).html( data );
-          alert( "Load was performed." );
-        });
-
-            // $( "#search" ).load( "/easymap/querylist" );
-
-        // $.get('/easymap/querylist',{query_numbers: values, name: cat_name}, function(data){
-
-        // });
-    
-        // $.get('/easymap/querylist', {query_numbers: values, name: cat_name}
-        //     ,function(data) {
-        // 	alert(data);
-        // 	// $("#geometry").data("info",data);
-        // }
-        // );
-    //     $.ajax({
-    //         type: "GET",
-    //         url: "/easymap/querylist",
-    //         data: {query_numbers: values, name: cat_name},
-    //         // dataType: "json",
-    //         success: function(data, textStatus) {
-    //         alert(data);
-    //     if (data) {
-    //         alert("Ready to Redirect!");
-    //         // data.redirect contains the string URL to redirect to
-    //         // window.location.href = data.redirect;
-    //         // window.onload(data)
-    //         // $('.main-container').load(data);
-    //         window.location = data;
-    //     }
-    //     else {
-    //         alert("ERROR");
-    //         // data.form contains the HTML for the replacement form
-    //         // $("#myform").replaceWith(data.form);
-    //         // }
-    //      }
-    //     }
-    // });
-
-});
 
 
 

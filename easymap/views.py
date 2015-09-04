@@ -8,25 +8,26 @@ import time
 import random
 import re
 
-# get 5 objects that randomly distribute in the set
+# Auxiliary function: for getting 5 objects that randomly distribute in the set
+# Parameters: locations_list_length is the maximum number the random number can reach.
 def get_five_radom_digits(locations_list_length):
 
-	# # Give the total number of the objects.
+	# Give the total number of the objects.
 	# last = al.objects.count() - 1 in Model.objects.all() level
 	last = locations_list_length - 1
-	# # get the around middle number. int / int = int, that's in Python.
+	# get the around middle number. int / int = int, that's in Python.
 	# middle = al.objects.count()/2 in Model.objects.all() level
 	middle = locations_list_length/2
-	# # get first 2 numbers in the first half part of the total number
+	# get first 2 numbers in the first half part of the total number
 	index_1 = random.randint(0, middle-1)
 	index_2 = random.randint(0, middle-1)
-	# # This keeps the first 2 ints definitely not the same, provided the total number is larger.
+	# This keeps the first 2 ints definitely not the same, provided the total number is larger.
 	if index_1 == index_2 : 
 		index_2 = middle-1
 
 	index_3 = middle
-	# # get the last 2 numbers in the second half of the total numbers,
-	# # and keep the two nor the same
+	# get the last 2 numbers in the second half of the total numbers,
+	# and keep the two nor the same
 	index_4 = random.randint(middle+1, last)
 	index_5 = random.randint(middle+1, last)
 	if index_4 == index_5:
@@ -35,14 +36,15 @@ def get_five_radom_digits(locations_list_length):
 	index_list = [index_1, index_2, index_3, index_4, index_5]
 	return index_list
 
-
-
-# Auxiliary function for creating a new query.
+# Auxiliary function: for creating a new query.
+# Parameters: query_type is the type of each query, in this stage only "single-keyword" type.
+# 	keywords are the keywords extracted from content.
+#   content is the original content from the user input.
 def save_query(query_type, keywords, content):
 
+	# When creating category date, can use 'datetime.date.today()'
 	current_time = time.strftime("%H:%M:%S")
 	current_date = time.strftime("%Y-%m-%d")
-	# When creating category date, can use 'datetime.date.today()'
 
 	try:
 			q = Query.objects.get(content=content)
@@ -61,160 +63,39 @@ def save_query(query_type, keywords, content):
 
 	return q
 
-# This function is for user searching.
+# Main function: for user searching.
+# Parameters: request is the searching request sent from the user browser.
 def query_search(request):
-	
-	# print request.POST['search-content']
-	content = request.POST['search-content']
+		
+	# To judge if the reqeust sent from tagCloud or the searching bar. 
+	# If the reqeust sent from tagCloud, it'd be using GET method,
+	# otherwise, it'd be using POST method.
+	if(request.method == 'GET'):
+		content = request.GET['search-content']
 
-	# Below is a RegEx for filtering harmful inputs.
-	# In this stage, give error when input has special chars except '-', 
-	# but okay with 0-9, a-z, A-Z
-	pattern = "^[a-zA-Z0-9-]+$"
+	else :
+		content = request.POST['search-content']
 
-	result = re.match(pattern, content)
-
-	if result is None:
-# !! NEED ERROR Page
-		return render(request, 'easymap/error.html')
-
-	# Except the content with special chars, the rest is mainly just only one word.
+	# A validating process is setting in leftmenu.js.
 	query_type = 'single-keyword'
 	keywords = content
-
 	query = save_query(query_type, keywords, content)
 
 	# get the category and the locations the user needs
 	locations_needed = AllLocations.objects.filter(name__icontains=query.keywords)
 
-	# print locations_needed
-
 	context_dict = {}
-
 	context_dict['locations'] = locations_needed
 	context_dict['table_name'] = str(keywords)+"-related"
 	context_dict['is_virtual_table'] = True
-	context_dict['columns_name'] = get_columns_name(keywords)
+	context_dict['columns_name'] = ["name","address","postcode"]
+	# context_dict['columns_name'] = get_columns_name(keywords)
 
 	return render(request,'easymap/category.html', context_dict)
-	# destination = request.GET['query_name']
 
-
-# 	finally:
-# 			request_string = destination
-
-# 			# c = Category.objects.all()
-# 			the_right_cat = ""
-			
-# 			# Here used a Field Type approach to filter and get the only one category.
-# 			the_right_cat = Category.objects.get(related_names__icontains=request_string)
-			
-# 			# Below are the backup method, but doesn't work for nhs. case-sensitive.
-# 			# for single_c in c:
-# 			# 	print single_c.related_names
-# 			# 	if retquest_string in single_c.related_names:
-# 			# 		print retquest_string
-# 			# 		the_right_cat = single_c
-# 			# 		break
-
-# 			if the_right_cat == "":
-# 				return HttpResponse("ERROR")
-
-
-# 			# then, get 5 random numbers to help select 5 typical locations for
-# 			# users, instead of all locations due to the USAGE_LIMIT in Google Map services
-# 			locations_list_length = len(locations_needed)
-			
-# 			# Here used list() to generate a list for objects set.
-# 			# Generate a list is necessary because we can directly access these elements within it
-# 			# by using the indexes when QuerySet is the only thing we get, rather than Model.objects.all()
-# 			locations_list = list(locations_needed)
-# 			indexes = get_five_radom_digits(locations_list_length, locations_list)
-
-# # It's not a JSON, but Whay is it? Why using it not json?
-# 			# selected_locations_list is generated from locations_list which is fully having all locations
-# 			# inside a category
-# 			selected_locations_list = []
-# 			for index in indexes:
-# 				selected_locations_list.append(vars(locations_list[index]))
-
-# 			#NOTE: each single_location in selected_locations_list is a dict type data.
-# 			# Following is a filter process by which the final selected_locations_list could
-# 			# be set without odd entries from database
-# 			for single_location in selected_locations_list:
-# 				# print "Before: %s " %single_location
-# 				del single_location['_state']
-# 				del single_location['category_id']
-# 				del single_location['id']
-# 				# print "After: %s" %single_location
-				
-# 			return HttpResponse(selected_locations_list)
-			# return HttpResponse("OK")
-
-def query_list(request):
-	print request.GET
-
-	# numbers = request.GET['query_numbers']
-	# request_string = request.GET['name']
-
-	# if numbers == "":
-	# 	return HttpResponse("ERROR")
-
-	# # c = Category.objects.all()
-	# the_right_cat = ""
-	# # Here used a Field Type approach to filter and get the only one category.
-	# the_right_cat = Category.objects.get(related_names__icontains=request_string)
-
-	# if the_right_cat == "":
-	# 	return HttpResponse("ERROR")
-
-
-	# # get the category and the locations the user needs
-	# locations_needed = AllLocations.objects.filter(category = the_right_cat)
-	# locations_list = list(locations_needed)
-
-	# selected_locations_list = []
-
-	# indexes = numbers.split(",")
-
-	# # int() is for parsing string to integer;
-	# # (index - 1) is due to the defference passing from the table in HTML in which begins with 1 not 0.
-	# for index in indexes:
-	# 	selected_locations_list.append(vars(locations_list[int(index)-1]))
-
-	# for single_location in selected_locations_list:
-	# # print "Before: %s " %single_location
-	# 	del single_location['_state']
-	# 	del single_location['category_id']
-	# 	del single_location['id']
-
-	# context_dict = {}
-	# categories = Category.objects.all()
-	# context_dict['categories'] = categories	
-	# context_dict['boldmessage'] = "here is the bold message!"
-	# context_dict['locations'] = selected_locations_list
-	# return HttpResponse(selected_locations_list)
-	# print "HHHHHH"
-	# return render(request ,'easymap/index.html')
-	# return render(request,'easymap/categorys.html',context_dict)
-	# return HttpResponse("LOLO")
-	# return render_to_response('easymap/index.html',context_dict)
-	# return render_to_response('measure/qualReport.html', {'name':name, 'list_report': report, 'message':'Measures correctly saved'}, RequestContext(request))
-	# return HttpResponseRedirect('/easymap/')
-	# return redirect() 
-	# return HttpResponseRedirect(reverse("/easymap/"))
-	# return HttpResponse("BAD")
-
-	# context_dict = {}
-	# context_dict['data'] = { 'success': 'true', 'redirect': 'true', 'redirectURL': "/easymap/" }
-
-	return HttpResponse(context_dict)
-
-
-
-
-
-# Auxiliary function to help filter the locations_list needed.
+# Auxiliary function: to help filter the locations_list needed.
+# Parameters: indexes are the number list containing the ids sent from the user browser.
+# 	request_string is the the name of the category requested.
 def get_locations_list(indexes, request_string):
 
 	if ( "-related" in request_string ):
@@ -227,13 +108,14 @@ def get_locations_list(indexes, request_string):
 			selected_locations_list.append(vars(single_location))
 
 	else :
-		# c = Category.objects.all()
+		
 		the_right_cat = ""
 		# Here used a Field Type approach to filter and get the only one category.
 		the_right_cat = Category.objects.get(id_name__icontains=request_string)
 
 		if the_right_cat == "":
-			return "False"
+			return render(request, 'easymap/error.html')
+			# return "False"
 
 		# get the category and the locations the user needs
 		locations_needed = AllLocations.objects.filter(category = the_right_cat)
@@ -241,23 +123,20 @@ def get_locations_list(indexes, request_string):
 
 		selected_locations_list = []
 
-		# indexes = numbers.split(",")
 		# int() is for parsing string to integer;
 		# (index - 1) is due to the defference passing from the table in HTML in which begins with 1 not 0.
 		for index in indexes:
 			selected_locations_list.append(vars(locations_list[int(index)-1]))
 
 	for single_location in selected_locations_list:
-	# print "Before: %s " %single_location
 		del single_location['_state']
 		del single_location['category_id']
 		del single_location['id']
 
-	# return 
 	return selected_locations_list
 
-
-# For displaying the most popular queries in the database.
+# Main Function: For displaying the most popular queries in the database.
+# Parameters: request is the popular queries request sent from the user browser.
 def show_popular(request):
 
 	# minus mark means descending order
@@ -269,57 +148,27 @@ def show_popular(request):
 
 	queries_json = json.dumps(queries)
 	return HttpResponse(queries_json)
-	# print queries_str
-	# queries_str = ""
-	# for single_query in popular_queries:
-	# 	queries_str += "<h3>"+str(single_query.content)+"<br/>"+str(single_query.frequency)+"</h3>"
 
-#  For displaying newest categorys in the database.
+# Main Function: For displaying newest categorys in the database.
+# Parameters: request is the most recent categories request sent from the user browser.
 def show_news(request):
 
 	# minus mark means descending order
 	the_newest_categorys = Category.objects.order_by('-creating_date')[:5]
 
-	# categorys_str = ""
-
-	# for single_category in the_newest_categorys:
-	# 	# print single_category
-	# 	categorys_str += "<h3>"+str(single_category.id_name)+" -- "+str(single_category.id)+"<br/>"+str(single_category.creating_date)+"</h3>"
-
 	categorys_str = "<div id='news-div'><ul class='list-group news-list'>"
-
 	categorys_str += "<li class='list-group-item new-list-top'><span class='badge news-top'>Date</span>New Created Name</li>"
 
 	for single_category in the_newest_categorys:
-		categorys_str += "<li class='list-group-item news-list-li'>"+"<span class='badge news-span'>"+ str(single_category.creating_date) +"</span>"+ str(single_category.id_name) +"</li>"
-
+		categorys_str += "<li class='list-group-item news-list-li'>"+"<span class='badge news-span'>"+ str(single_category.creating_date) +"</span>"+ "<a class='news-list-a' href='/easymap/category?category_name="+str(single_category.id_name)+"'>" + str(single_category.id_name) + "</a>" +"</li>"
 
 	categorys_str += "</ul></div>"
-# 
-#   
-#     
-#     Cras justo odio
-#   </li>
-#   <li class="list-group-item">
-#     <span class="badge">2</span>
-#     Dapibus ac facilisis in
-#   </li>
-#   <li class="list-group-item">
-#     <span class="badge">1</span>
-#     Morbi leo risus
-#   </li>
-
-
-	# categorys = []
-
-	# for single_category in the_newest_categorys:
-	# 	categorys.append({'name':str(single_category.id_name),'':})
 
 	return HttpResponse(categorys_str)
 
 
-
-# For displaying Category Library
+# Main Function: For displaying Category Library
+# Parameters: request is the showing categories request sent from the user browser.
 def show_categorys(request):
 	
 	categorys_str = "<div id='cat-container'><h3 id='cat-title' class='headline'>Category Library</h3><hr>"
@@ -327,18 +176,14 @@ def show_categorys(request):
 	categorys = Category.objects.all()
 
 	for single_category in categorys:
-		categorys_str += '<a class="btn btn-warning cat-btns" href="/easymap/category?category_name='+str(single_category.id_name)+'">'+str(single_category.id_name)+'</a>'
+		categorys_str += '<a class="btn btn-success cat-btns" href="/easymap/category?category_name='+str(single_category.id_name)+'">'+str(single_category.id_name)+'</a>'
 
 	categorys_str += "</div>"
 
 	return HttpResponse(categorys_str)
-# categorys_str += '<div class="cat-divs"><a class="btn btn-warning cat-btns" href="/easymap/category?category_name='+str(single_category.id_name)+'">'+str(single_category.id_name)+'</a></div>'
-# href="easy/category?category_name='+str(single_category.id_name)+'
-# string = '<div class="divs"><p>Hello World</p></div><div class="divs"><p>Hello World</p></div><div class="divs"><p>Hello World</p></div><div class="divs"><p>Hello World</p></div>'
 
-
-
-# For displaying table page.
+# Main Function: For displaying table page.
+# Parameters: request is the asking for show entries under a category sent from the user browser.
 def category(request):
 
 	category_name = request.GET['category_name']
@@ -353,32 +198,33 @@ def category(request):
 		context_dict['locations'] = locations
 		context_dict['table_name'] = category_name
 		context_dict['is_virtual_table'] = False
-		context_dict['columns_name'] = get_columns_name(category.id_name)
+		context_dict['columns_name'] = ["name","address","postcode"]
+		# context_dict['columns_name'] = get_columns_name(category.id_name)
 		
 	except Category.DoesNotExist:
-# Need ERROR Page!! 
-		pass
+		return render(request, 'easymap/error.html')
+		# pass
 
 	return render(request,'easymap/category.html',context_dict)
 
-
+# Auxiliary Function.
 # Get corresponding columns to show on table page.
 # However it returns a default value because of some technical problems when showing different names on page.
-def get_columns_name(category_name):
+# def get_columns_name(category_name):
 
-	switcher = {
-		'nhs' :			["name","address","postcode","open_hours","nhs_type"],
-		'subway' :		["name","address","postcode","park_and_ride","lost_property_number"],
-		'library' :		["name","address","postcode","website"],
-	}
+# 	switcher = {
+# 		'nhs' :			["name","address","postcode","open_hours","nhs_type"],
+# 		'subway' :		["name","address","postcode","park_and_ride","lost_property_number"],
+# 		'library' :		["name","address","postcode","website"],
+# 	}
 
-	default_columns_name = ["name","address","postcode"]
+# 	default_columns_name = ["name","address","postcode"]
 
-	# return switcher.get(category_name, default_columns_name)
-	return default_columns_name
+# 	# return switcher.get(category_name, default_columns_name)
+# 	return default_columns_name
 
 
-# Get some random queries.
+# Auxiliary Function: Get some random queries.
 def get_random_queries():
 
 	query_num = Query.objects.count()
@@ -387,77 +233,44 @@ def get_random_queries():
 	indexes += get_five_radom_digits(query_num)
 	indexes += get_five_radom_digits(query_num)
 
-	print len(indexes)
-	# indexes = indexes + extra_indexes
-	# print indexes
 	random_queries = []
 	all_quries = Query.objects.all()
 
 	for index in indexes:
 		random_queries.append(all_quries[index])
 
-	# print random_queries
 	return random_queries
 
 
-# NOTE: put all variabales in the context_dict, then just mention the 
-# name of the variablble which already in the context_dict to use it.
-# it's very fast and neat! try it!
+# Main Function: this is the most important main function to render the home page.
+# Parameters: request is the home page request sent from the user browser.
 def index(request):
-
-	# json = request.POST.get('json', False)
-	# data = request.GET.get('data', False)
-
-	# try:
-	# 	message = 'You submitted: %r' % request.GET['q']
-	# except MultiValueDictKeyError:
-	# 	message = 'You submitted nothing!'
-
-	# request.GET.get('json')
-
-	# q = request.GET.get("q", None)
-	# if q:
-	#     message = 'q= %s' % q
-	# else:
-	#     message = 'Empty'
-
-	# if request.GET.get('json'):
-	# 	message = 'You submitted: %s' % request.GET['json']
-	# else:
-	# 	message = 'You submitted nothing!'
 
 	context_dict = {}
 
 	if request.GET:
-		print request.GET
 
 		data = request.GET['data']
-
-		# print data
 		data = data[1:-1];
-
 		data_array = data.split('%')
 
+		# the request category name
 		data_name = data_array[0].split(':')
 
+		# the request numbers
 		data_array_numbers = data_array[1].split(':')
 		data_numbers = data_array_numbers[1].split(',')
 
-		print data_name[1]
-		print data_numbers
-
+		# get the locations needed from an auxiliary function get_locations_list().
 		locations_list = get_locations_list(data_numbers, data_name[1])
 		context_dict['locations_list'] = locations_list
 
 	else :
+		# If there is no extra information in the request, then give a None result.
 		context_dict['locations_list'] = None
-
 
 	random_tags_query = get_random_queries()
 	context_dict['tags'] = random_tags_query
-	# categories = Category.objects.all()
-	# context_dict['categories'] = categories	
-	# context_dict['boldmessage'] = "here is the bold message!"
 
 	print context_dict['locations_list']
 	return render(request, 'easymap/index.html', context_dict)

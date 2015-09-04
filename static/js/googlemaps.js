@@ -1,6 +1,7 @@
 // This javascript file is responsible for the map displaying issues.
 var geometry = "";
-var mainMap, geocoder, markerBounds, home_icon, noormal_icon, user_icon, bounceTimer;
+var mainMap, geocoder, directionsService, directionsDisplay, currentLocation, markerBounds;
+var home_icon, noormal_icon, user_icon, bounceTimer;
 var glasgowUni = new google.maps.LatLng(55.872100, -4.287835);
 // This is used temporarily center the map when user input locations / routes.
 // var tempCenter = "";
@@ -11,6 +12,7 @@ var markers = [];
 // var currentInfoWindow = [];
 var currentInfoWindow = null;
 
+var settingInputboxFlag = null;
 
 /**
  * The CenterControl adds a control to the map that recenters the map
@@ -71,35 +73,14 @@ function CenterControl(controlDiv, map, center) {
   clearImg.style.height = '20px';
   goCenterUI.appendChild(clearImg);
 
-  // Set CSS for the control interior
-  // var goCenterText = document.createElement('div');
-  // goCenterUI.style.color = 'rgb(25,25,25)';
-  // goCenterUI.style.fontFamily = 'Roboto,Arial,sans-serif';
-  // goCenterUI.style.fontSize = '16px';
-  // goCenterUI.style.lineHeight = '38px';
-  // goCenterUI.style.paddingLeft = '5px';
-  // goCenterUI.style.paddingRight = '5px';
-  // goCenterUI.innerHTML = 'CM';
-
-  // goCenterUI.appendChild(goCenterText);
-
-  // // Set CSS for the control interior
-  // var setCenterText = document.createElement('div');
-  // setCenterText.style.color = 'rgb(25,25,25)';
-  // setCenterText.style.fontFamily = 'Roboto,Arial,sans-serif';
-  // setCenterText.style.fontSize = '16px';
-  // setCenterText.style.lineHeight = '38px';
-  // setCenterText.style.paddingLeft = '5px';
-  // setCenterText.style.paddingRight = '5px';
-  // setCenterText.innerHTML = 'SC';
-  // setCenterUI.appendChild(setCenterText);
-
   // Setup the click event listener for 'Center':
   // simply set the map to the control's current center property.
   google.maps.event.addDomListener(goCenterUI, 'click', function() {
     // var currentCenter = control.getCenter();
     // map.setCenter(currentCenter);
     clearMarkers();
+    mainMap.setZoom(12);
+    mainMap.setCenter(glasgowUni);
   });
 
   // Setup the click event listener for 'Set':
@@ -134,6 +115,12 @@ CenterControl.prototype.setCenter = function(center) {
   this.center_ = center;
 };
 
+function settingInputbox() {
+  if(currentLocation){
+      $('#location-input').val('My Location');
+  };
+}
+
 // This is the function used to get user's current location.
 function geoLocating() {
 
@@ -145,11 +132,17 @@ function geoLocating() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
+      currentLocation = pos;
       dropMarker(pos, "your location.", user_icon);
 
       // infoWindow.setPosition(pos);
       // infoWindow.setContent('Location found.');
       mainMap.setCenter(pos);
+
+      if(settingInputboxFlag) {
+        settingInputbox();
+      }
+      
     }, function() {
       handleLocationError(true, infoWindow, mainMap.getCenter());
     });
@@ -166,21 +159,13 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                         'Error: Your browser doesn\'t support geolocation.');
 }
 
-
-
-
-
-// This funtion is used to spli the data string passed from Django
+// This funtion is used to split the data string passed from Django
 // The split process is essential and has to be changed from time to time ,because the string comes from databse to 
 // here always with some extra changes or data inside mades it complex.
 function splitDataString() {
 
-  // Set Timeout is very important because GMap.js should get the data after the data setting by the inner js in html file.
-  // setTimeout(function(){
-
   geometry = $('#geometry').data('info');
   // alert("IN JS geometry: " + geometry);
-  // new Messi("IN JS geometry: " + geometry, {title: 'Success Info', titleClass: 'success', center: true, buttons: [{id: 0, label: 'Close', val: 'X'}]});
 
   // Removing the outer brackets "[...]"
   geometry = geometry.substring(1, geometry.length-1);
@@ -221,10 +206,6 @@ function splitDataString() {
     //pass all entries in each block into the following function to get a single location array.
     generateSingleLocationArray(single_location_array);
       
-    // }, 100)
-
-    // consume some time
-    // for(var j=0;j<1000000;j++){}
   }
 
   // They are might be useful to zoom in / out automatically for the user.
@@ -329,14 +310,6 @@ function displayLocations(location_array, postcode, address, locationName) {
       mainMap.setCenter(results[0].geometry.location);
       marker = dropMarker(results[0].geometry.location, locationName, normal_icon);
 
-      // var marker = new google.maps.Marker({
-      //   icon: image_icon,
-      //   map: mainMap,
-      //   position: results[0].geometry.location,
-      //   title: "This is " + locationName
-      // });
-      // markerBounds.extend(results[0].geometry.location);
-
     } else {
       new Messi('Geocode was not successful for the following reason: ' + status, {title: 'We Ran An Error..', titleClass: 'anim error', center: 'true', buttons: [{id: 0, label: 'Close', val: 'X'}]});
     }
@@ -439,6 +412,8 @@ function clearMarkers() {
     while( single_marker = markers.pop() ){
         single_marker.setMap(null);
     }
+
+    directionsDisplay.setMap(null);
 }
 
 // Close infowindow already opened on map.
@@ -446,58 +421,12 @@ function closeInfoWindow() {
 
   currentInfoWindow.close();
 
-  // var single_infowindow;
-  // while( single_infowindow = currentInfoWindow.pop() ){
-  //   single_infowindow.close();    
-  // }
 }
-
-// function drop(){
-  // clearMarkers();
-  // for (var i = 0; i < neighborhoods.length; i++) {
-  //   addMarkerWithTimeout(neighborhoods[i], i * 200);
-  // }
-// }
-// function addMarkerWithTimeout(position, timeout) {
-//   window.setTimeout(function() {
-//     markers.push(new google.maps.Marker({
-//       position: position,
-//       map: map,
-//       animation: google.maps.Animation.DROP
-//     }));
-//   }, timeout);
-// }
-// 
-// function clearMarkers() {
-//   for (var i = 0; i < markers.length; i++) {
-//     markers[i].setMap(null);
-//   }
-//   markers = [];
-// }
 
 function getStyles() {
   
   // Create an array of styles.
   var styles = [
-    // {
-    //   stylers: [
-    //     { hue: "#8f0" },
-    //     { saturation: 0 }
-    //   ]
-    // },{
-    //   featureType: "road",
-    //   elementType: "geometry",
-    //   stylers: [
-    //     { lightness: 100 },
-    //     { visibility: "simplified" }
-    //   ]
-    // },{
-    //   featureType: "road",
-    //   elementType: "labels",
-    //   stylers: [
-    //     { visibility: "on" }
-    //   ]
-    // }
 
     { "featureType": "poi", "elementType": "geometry", "stylers": [ { "color": "#a7a3d2" } ] },
     { "featureType": "landscape.natural", "stylers": [ { "color": "#95CEC2" } ] },
@@ -524,6 +453,9 @@ function initialize() {
   // to the map type control.
   markerBounds = new google.maps.LatLngBounds();
   geocoder = new google.maps.Geocoder();
+  directionsService = new google.maps.DirectionsService;
+  directionsDisplay = new google.maps.DirectionsRenderer;
+
   var mapDiv = document.getElementById('map-canvas');
   var mapOptions = {
     zoom: 12,
@@ -588,29 +520,8 @@ function initialize() {
   setTimeout(function(){
     $('#map-inputs').show("slow");
   },500);
-//   google.maps.event.addListener(marker_glasgowUni, 'mouseover', function() {
-//   if (this.getAnimation() == null || typeof this.getAnimation() === 'undefined') {        
-       
-//       Because of the google maps bug of moving cursor several times over and out of marker
-//       causes bounce animation to break - we use small timer before triggering the bounce animation
-      
-//       clearTimeout(bounceTimer);
-      
-//       var that = this;
-//       bounceTimer = setTimeout(function(){
-//            that.setAnimation(google.maps.Animation.BOUNCE);
-//       },
-//       500);
-//   }
-// });
-    
-    // google.maps.event.addListener(marker_glasgowUni, 'mouseout', function() {
-    //      if (this.getAnimation() != null) {
-    //         this.setAnimation(null);
-    //      }
-    //      // If we already left marker, no need to bounce when timer is ready
-    //      clearTimeout(bounceTimer);
-    // });
+
+  directionsDisplay.setMap(mainMap);
 
   // mainMap.data.loadGeoJson('../static/images/Glasgow_Rail_References.json');
 google.maps.event.addListener(mainMap, 'click', closeInfoWindow);
@@ -618,35 +529,10 @@ google.maps.event.addListener(mainMap, 'click', closeInfoWindow);
 }
 // google.maps.event.addDomListener(window, 'load', initialize);
 
-
-// Callback function.
-function test(a, b, test2) {
-  var c = 0;
-
-  setTimeout(function() {
-    var c = a+b;
-    var i = 1;
-
-    alert("test1 "+ c);    
-  }, 100);
-
-  test2(c);
-  // return c;
-}
-
-function test2(c) {
-  // var c = c;
-  alert("test2 "+c);
-}
-
-// $("#whats-new-btn").click(function (){
-//     var c = test(1,2,test2);
-//     // test2(c);
-// });
-
 // This jQuery is adding listener for clicking on show map button.
 $('#show-map').click(function() {
   // alert();
+  if($('#alter').length != 0) {
     $('#alter').fadeOut('fast');
       document.getElementById("alter").setAttribute("id", "map-canvas");
     $('#map-canvas').fadeIn('fast');
@@ -656,19 +542,73 @@ $('#show-map').click(function() {
     setTimeout(function(){
       $('#map-inputs').show("slow");
     },500);
-    // var addr = document.getElementById("inputSmall").value;
-    // alert(addr);
-    // displayLocations([],addr,addr,"Test");
+    
+  }
+
 })
 
-$('#map-submit').click(function() {
-  var location = $('#location-input').val();
-  // alert(location);
-  displayLocations([],location,location,location);
+// This function is used to display route between two locations.
+function calculateAndDisplayRoute(directionsService, directionsDisplay, origin, destination) {
+  directionsService.route({
+    origin: origin,
+    destination: destination,
+    travelMode: google.maps.TravelMode.DRIVING
+  }, function(response, status) {
+    if (status === google.maps.DirectionsStatus.OK) {
+      directionsDisplay.setDirections(response);
+    } else {
+      window.alert('Directions request failed due to ' + status);
+    }
+});
+}
+
+
+function getCurrentLocationCoordinate() {
+  // var jsonData = JSON.stringify(currentLocation);
+  var lat = currentLocation.lat;
+  var lng = currentLocation.lng;
+  // alert(a);
+  var coordinate = lat+","+lng;
+  return coordinate;
+  // currentLocationCoordinate
+}
+
+
+
+// This function is used to find a location in home page.
+function findLocation(data) {
+
+  var data = data;
+  var requestLocations = data.split(/:|;/g);
+
+  if (requestLocations[1].trim().length == 0)  {
+        Messi.alert("Sorry, it seems you haven't type anything..");
+  }
+
+  else {
+    var origin = requestLocations[1].trim();
+    var destination = requestLocations[3].trim();
+
+    // alert(origin.trim()+"My Location"+"\n"+ (origin.trim() == "My Location"));
+    // alert("or: "+JSON.stringify(currentLocation)+" des: "+destination);
+    if(requestLocations[3].trim().length == 0) {
+      displayLocations([],origin,origin,origin);
+    }
+    else if(origin == "My Location") {
+      var origin = getCurrentLocationCoordinate();
+
+      calculateAndDisplayRoute(directionsService, directionsDisplay, currentLocation, destination);    
+    }
+    else {
+      calculateAndDisplayRoute(directionsService, directionsDisplay, origin, destination);    
+    }
+  }
+}
+
+$('#get-location-btn').click(function () {
+  settingInputboxFlag = true;
+  geoLocating();
 })
-
-
-
 
 
 
